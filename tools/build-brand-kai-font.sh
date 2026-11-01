@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 site, out = Path(sys.argv[1]), Path(sys.argv[2])
-sources = [site / 'index.html', site / 'src' / 'zh-CN.mjs']
+sources = [site / 'index.html', site / '404.html', site / 'src' / 'zh-CN.mjs']
 chars = set()
 for path in sources:
     for char in path.read_text(encoding='utf-8'):

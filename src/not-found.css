@@ -1,0 +1,43 @@
+/* Standalone styles for 404.html. Deliberately not reusing src/styles.css: the
+   404 can be served from any path, has no JavaScript, and only needs the
+   type/colour tokens from docs/24-通用设计规范.md. */
+:root {
+  --canvas: #f8f7f3;
+  --ink: #242b30;
+  --secondary: #59666c;
+  --accent: #526b79;
+  --ring: #bfc4c1;
+  --display-en: 'Manrope', sans-serif;
+  --display-zh: 'LXGW WenKai', 'KaiTi', 'STKaiti', serif;
+  --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: var(--sans);
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; }
+a { color: inherit; text-decoration: none; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+
+.masthead { display: flex; align-items: baseline; gap: 10px; padding: clamp(22px, 4vw, 40px) clamp(20px, 5vw, 56px) 0; }
+.masthead .brand { font: 400 21px/1 var(--display-en); letter-spacing: -.04em; }
+.masthead .brand-zh { font: 400 14px/1 var(--display-zh); letter-spacing: .12em; padding-left: .12em; color: var(--secondary); }
+
+main { place-self: center; width: 100%; max-width: 32rem; padding: 0 clamp(20px, 6vw, 32px); }
+.eyebrow { margin: 0; font: 400 10px/1.4 var(--display-en); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+h1 { margin: 18px 0 0; font: 400 clamp(32px, 4.8vw, 56px)/1.4 var(--display-zh); letter-spacing: .06em; }
+.en { margin: 12px 0 0; color: var(--secondary); font: 400 15px/1.7 var(--display-en); letter-spacing: .01em; }
+.why { margin: 30px 0 0; color: var(--secondary); font: 400 15px/1.9 var(--sans); letter-spacing: .015em; }
+.links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 32px; }
+.links a { color: var(--accent); font: 400 12px/1.5 var(--display-en); letter-spacing: .12em; border-bottom: 1px solid var(--ring); padding-bottom: 4px; }
+.links a:hover { border-color: var(--accent); }
+
+footer { padding: 26px clamp(20px, 5vw, 56px); color: var(--secondary); font: 400 10px/1.7 var(--display-en); letter-spacing: .08em; }
+footer span { margin-right: 6px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  main { animation: not-found-arrive 420ms cubic-bezier(.2, .75, .2, 1) both; }
+}
+@keyframes not-found-arrive { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
