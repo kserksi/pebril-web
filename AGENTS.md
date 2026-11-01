@@ -22,7 +22,8 @@ Superseded rule: this repository used to live inside the product repository as `
 
 ## Layout boundary
 
-- Site files live at the repository root and are the only thing deployed: `index.html`, `src/`, `assets/`, `journal/`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llm.txt`.
+- Site files live at the repository root and are the only thing deployed: `index.html`, `404.html`, `src/`, `assets/`, `journal/`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llm.txt`.
+- `scripts/`, `.github/`, `CONTRIBUTING.md`, `SECURITY.md` are repository scaffolding, not site content.
 - `journal-src/` is the Hugo source for `journal/`; `journal/` is generated output and is committed so the site can be published without a build step.
 - `docs/`, `qa/`, `tools/`, `AGENTS.md`, `loning.md` are not part of the deployed site.
 - Tests, probes and screenshots belong in `qa/`; keep them out of the site directories. Browser binaries, `node_modules` and artifacts are gitignored.
@@ -32,8 +33,16 @@ Superseded rule: this repository used to live inside the product repository as `
 - Journal: `tools/bin/hugo --source journal-src --cleanDestinationDir` (Hugo v0.169, binary gitignored).
 - After adding or renaming a Journal title, rerun `tools/build-kai-font.sh`; after changing Chinese brand/album copy, rerun `tools/build-brand-kai-font.sh`. Both write subsets that must be committed.
 - The homepage opts into cross-document view transitions with an inline `<style>` whose bytes are pinned by a CSP hash in `index.html`. If you edit that block, recompute the hash (`sha256-…`) or the transition silently stops working.
+- Static checks: `python3 scripts/check-site.py` (local references, third-party requests, CSP hash, sitemap/canonical agreement, robots/llms pointers, icons). No browser needed; it is the first CI step.
 - Tests: run serially from the repository root; parallel runs produce timing false negatives. See `qa/README.md` for the exact environment variables.
-- Before delivering, run the full serial suite and confirm 56/56 (or the current total) plus the journal audit probe.
+- Before delivering, run `python3 scripts/check-site.py` and the full serial suite, and confirm every test passes (the current total is 57; do not report a number you did not observe) plus the journal audit probe.
+
+## Repository conventions
+
+- `dev` is the working branch, `main` the published baseline. Commit messages use an English conventional prefix (`feat:`, `fix:`, `docs:`, `test:`, `chore:`). Do not rewrite published history.
+- The site icon is a transparent brand-coloured `P` in Manrope (`assets/icon.svg`) with committed `favicon.ico`, `icon-180.png` and `icon-512.png`; every page declares all three link types. If the glyph changes, regenerate all four from the same source.
+- `404.html` carries `robots noindex` and must be served with status 404 by the host; it is not listed in `sitemap.xml`.
+- Repository scaffolding follows the product repository's reusable constraints; keep the two repositories' conventions aligned unless the owner decides otherwise.
 
 ## Working boundary
 

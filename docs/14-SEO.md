@@ -39,6 +39,12 @@ The layout wrapper is a neutral `div`, keeping `main` out of sectioning ancestor
 
 `robots.txt` allows general crawling, including the JavaScript, CSS, fonts and image assets needed to render the page, and advertises `sitemap.xml`. The sitemap lists the canonical homepage plus the Journal index and its article, with `hreflang` alternates for the Chinese and English editions. Since 2026-11-01 the Journal is a built part of the site (`journal-src/` → `journal/`), so it is no longer excluded from discovery. No fabricated `lastmod`, release dates, ratings, offers or search actions are emitted. Demo dates describe photos only.
 
+### Icons and the 404 page · 2026-11-01
+
+Every page declares the site icon (`rel="icon"` for `favicon.ico` and `assets/icon.svg`, `rel="apple-touch-icon"` for `assets/icon-180.png`), so browsers no longer request a missing `/favicon.ico`. The icon is a transparent brand-coloured `P` taken from the site's own typeface; it is a favicon, not a logo, and does not appear inside the page.
+
+`404.html` is a real static page: same paper, ink and Kai heading as the site, CSP with `script-src 'none'`, `robots` set to `noindex`, and two exits (home, Journal). Hosting must serve it with status **404**, not 200 — that is the one thing local checks cannot prove. No fabricated routes are listed in the sitemap for it.
+
 `llms.txt` is the curated public overview and is discoverable through `rel="describedby"`; owner-requested `llm.txt` points to that single maintained overview. These text files use only public facts and destinations, not internal design notes or filesystem paths. The proposal supplements normal discoverability; it neither controls crawler access nor guarantees inclusion or ranking.
 
 ### Deployment acceptance still required
