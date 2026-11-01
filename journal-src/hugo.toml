@@ -1,0 +1,49 @@
+# Pebril Journal — Hugo source.
+# Build: ../../.build/tools/hugo/hugo --source journal-src --cleanDestinationDir
+# Output: ../journal (static, served by the same preview server as the homepage).
+
+baseURL = "https://pebril.dev/journal/"
+title = "Pebril 手记"
+publishDir = "../journal"
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = false
+disableKinds = ["taxonomy", "term"]
+timeZone = "Asia/Shanghai"
+
+[languages]
+  [languages.zh]
+    label = "中文"
+    locale = "zh-CN"
+    contentDir = "content/zh"
+    weight = 1
+    title = "Pebril 手记"
+    [languages.zh.params]
+      tagline = "记录 Pebril 的设计、取舍与实现"
+  [languages.en]
+    label = "English"
+    locale = "en"
+    contentDir = "content/en"
+    weight = 2
+    title = "Pebril Journal"
+    [languages.en.params]
+      tagline = "Notes on how Pebril is designed and built"
+
+[params]
+  brand = "Pebril"
+  siteURL = "https://pebril.dev/"
+  # Chinese is the authoritative language; English mirrors it.
+  authoritativeLang = "zh"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.extensions]
+    typographer = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[minify]
+  minifyOutput = false

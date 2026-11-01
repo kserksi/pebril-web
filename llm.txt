@@ -1,0 +1,7 @@
+# Pebril
+
+> Pebril is an open-source, self-hosted image management project in early development, licensed under MIT.
+
+## Overview
+
+- [Pebril overview for language models](https://pebril.dev/llms.txt): Canonical project summary, public resources, development status and local-photo privacy information.

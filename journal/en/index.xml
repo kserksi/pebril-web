@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Journal on Pebril Journal</title>
+		<link>https://pebril.dev/journal/en/</link>
+		<description>Recent content in Journal on Pebril Journal</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 01 Nov 2026 00:00:00 +0800</lastBuildDate>
+		
+			<atom:link href="https://pebril.dev/journal/en/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Why Pebril Exists</title>
+				<link>https://pebril.dev/journal/en/why-pebril/</link>
+				<pubDate>Sun, 01 Nov 2026 00:00:00 +0800</pubDate>
+				<guid>https://pebril.dev/journal/en/why-pebril/</guid>
+				<description>&lt;p&gt;I write, and I take photographs. The album grows a little thicker every year, and finding one particular picture in it gets a little harder.&lt;/p&gt;&#xA;&lt;p&gt;Most albums sort by folder and by date, and they do it neatly. They remember that the photograph exists. They do not remember that mountain, or the mist that afternoon.&lt;/p&gt;&#xA;&lt;p&gt;That part I have to carry myself.&lt;/p&gt;&#xA;&lt;p&gt;I tried a few open-source albums too. Some of them ask you to settle a server, a database and a long list of settings first, before you are allowed to see a single photograph. Some were young, and went quiet at some version, and never woke up again. The last one I used could not keep its breath when I moved too many pictures in at once.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

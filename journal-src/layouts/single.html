@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-head">
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{- with .Params.status }}<span aria-hidden="true">·</span><span>{{ i18n "statusColon" }}{{ . }}</span>{{ end }}
+    </p>
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="post-lede">{{ . }}</p>{{ end }}
+  </header>
+  <div class="prose">{{ .Content }}</div>
+</article>
+<nav class="post-nav" aria-label="{{ i18n "journal" }}">
+  <a href="{{ .Site.Home.RelPermalink }}">{{ i18n "allNotes" }}</a>
+</nav>
+{{ end }}

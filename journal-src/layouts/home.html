@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="intro">
+  <h1 class="journal-title">{{ with .Title }}{{ . }}{{ else }}{{ i18n "journalTitle" }}{{ end }}</h1>
+  <div class="prose intro-body">{{ .Content }}</div>
+</article>
+<ol class="entries">
+  {{- range .Pages.ByDate.Reverse }}
+  <li>
+    <a class="entry" href="{{ .RelPermalink }}">
+      <time class="entry-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <h2 class="entry-title">{{ .Title }}</h2>
+      {{ with .Params.description }}<p class="entry-summary">{{ . }}</p>{{ end }}
+    </a>
+  </li>
+  {{- end }}
+</ol>
+{{ end }}

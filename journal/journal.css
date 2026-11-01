@@ -1,0 +1,219 @@
+@font-face {
+  font-family: "Pebril Kai";
+  src: url("fonts/pebril-kai.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --canvas: #f8f7f3;
+  --ink: #242b30;
+  --secondary: #59666c;
+  --accent: #526b79;
+  --rule: #e3e0d8;
+  --rule-strong: #cfcbc0;
+  --wash: #f1efe8;
+  --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --kai: "Pebril Kai", "KaiTi", "STKaiti", "Kaiti SC", "Songti SC", serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--canvas); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  letter-spacing: .008em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+::selection { background: rgb(167 182 164 / .34); }
+
+.skip { position: fixed; top: -100px; left: 20px; z-index: 9; padding: 10px 14px; background: var(--canvas); border: 1px solid var(--rule-strong); }
+.skip:focus { top: 14px; }
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: clamp(22px, 4vw, 40px) clamp(20px, 5vw, 56px) 0;
+  font-size: 13px;
+  letter-spacing: .03em;
+  color: var(--secondary);
+}
+.brand { display: inline-flex; align-items: baseline; gap: 12px; color: var(--ink); }
+.brand-en { font-family: "Manrope", system-ui, sans-serif; font-size: 21px; letter-spacing: -.04em; }
+.brand-zh { font-family: var(--kai); font-size: 14px; letter-spacing: .12em; color: var(--secondary); }
+.masthead-nav { display: inline-flex; align-items: baseline; gap: 20px; }
+.masthead-nav a { color: var(--secondary); }
+.masthead-nav a:hover, .masthead-nav a:focus-visible { color: var(--ink); }
+
+main { display: block; }
+
+.intro, .post, .entries, .post-nav {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 5vw, 40px);
+}
+.intro { padding-top: clamp(56px, 10vh, 96px); }
+.journal-title {
+  margin: 0 0 .7em;
+  font-family: var(--kai);
+  font-size: clamp(30px, 3.4vw, 40px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: .03em;
+}
+.intro-body { color: var(--secondary); }
+
+.prose { font-size: 1.02rem; line-height: 1.95; color: var(--ink); text-wrap: pretty; }
+.prose > * + * { margin-top: 1.32em; }
+.prose p { margin: 0; }
+.prose strong { font-weight: 600; }
+.prose em { font-style: italic; }
+.prose h2 {
+  margin-top: 2.5em;
+  margin-bottom: .2em;
+  font-family: var(--kai);
+  font-size: 1.38rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .03em;
+}
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: .1em;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.prose a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--rule-strong); }
+.prose a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: .45em; }
+.prose blockquote {
+  margin: 1.8em 0;
+  padding-left: 1.2em;
+  border-left: 1px solid var(--rule-strong);
+  color: var(--secondary);
+}
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6em 0; }
+.prose hr + p { color: var(--secondary); font-size: .94rem; line-height: 1.9; }
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .88em;
+  padding: .12em .36em;
+  border-radius: 3px;
+  background: var(--wash);
+}
+.prose pre {
+  overflow-x: auto;
+  padding: 1em 1.15em;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--wash);
+  font-size: .84rem;
+  line-height: 1.7;
+}
+.prose pre code { padding: 0; background: none; font-size: inherit; }
+
+.post { padding-top: clamp(56px, 9vh, 88px); }
+.post-head { margin-bottom: 2.4em; }
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .6em;
+  margin: 0 0 1em;
+  font-size: 12px;
+  letter-spacing: .05em;
+  color: var(--secondary);
+  font-variant-numeric: tabular-nums;
+}
+.post-title {
+  margin: 0;
+  font-family: var(--kai);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .03em;
+}
+.post-lede { margin: 1.1em 0 0; font-size: 1.02rem; line-height: 1.85; color: var(--secondary); }
+
+.entries { list-style: none; margin: clamp(48px, 8vh, 72px) auto 0; padding-top: 8px; border-top: 1px solid var(--rule); }
+.entries li + li { border-top: 1px solid var(--rule); }
+.entry { display: block; padding: clamp(20px, 3vh, 28px) 0; }
+.entry-date { display: block; font-size: 12px; letter-spacing: .06em; color: var(--secondary); font-variant-numeric: tabular-nums; }
+.entry-title {
+  margin: .35em 0 0;
+  font-family: var(--kai);
+  font-size: 1.34rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .03em;
+  transition: color .3s ease;
+}
+.entry-summary { margin: .5em 0 0; font-size: .95rem; color: var(--secondary); }
+.entry:hover .entry-title, .entry:focus-visible .entry-title { color: var(--accent); }
+
+.post-nav { margin: clamp(56px, 9vh, 88px) auto clamp(64px, 10vh, 96px); padding-top: 22px; border-top: 1px solid var(--rule); font-size: 13px; }
+.post-nav a { color: var(--secondary); }
+.post-nav a:hover { color: var(--ink); }
+
+.colophon {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 26px clamp(20px, 5vw, 40px) 56px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--secondary);
+}
+.colophon p { margin: 0; }
+.colophon-links { display: flex; flex-wrap: wrap; gap: .7em; margin-top: .4em !important; }
+.colophon a:hover { color: var(--ink); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .masthead { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .prose { font-size: 1rem; line-height: 1.9; }
+}
+
+/* Cross-document view transitions. The journal keeps the site's quiet motion:
+   the page you leave settles into the paper, then the next one rises into it.
+   The two snapshots never overlap, so text does not double; the wordmark holds
+   its place. Pure CSS; the journal ships no JS. */
+@view-transition { navigation: auto; }
+
+::view-transition-group(root) {
+  animation-duration: 360ms;
+  animation-timing-function: cubic-bezier(.2, .75, .2, 1);
+}
+::view-transition-old(root) { animation: journal-leave 160ms cubic-bezier(.2, .75, .2, 1) both; }
+::view-transition-new(root) { animation: journal-arrive 180ms cubic-bezier(.2, .75, .2, 1) 170ms both; }
+
+@keyframes journal-leave {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes journal-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.brand { view-transition-name: journal-brand; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .001ms !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

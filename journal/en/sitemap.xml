@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://pebril.dev/journal/en/</loc>
+    <lastmod>2026-11-01T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://pebril.dev/journal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://pebril.dev/journal/en/"
+                />
+  </url><url>
+    <loc>https://pebril.dev/journal/en/why-pebril/</loc>
+    <lastmod>2026-11-01T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://pebril.dev/journal/why-pebril/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://pebril.dev/journal/en/why-pebril/"
+                />
+  </url>
+</urlset>

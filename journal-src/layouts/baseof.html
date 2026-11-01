@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F8F7F3">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  {{- $desc := .Params.description | default .Site.Params.tagline | default .Site.Title }}
+  <meta name="description" content="{{ $desc }}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{- $default := .Permalink }}
+  {{- range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+  {{- if eq .Language.Lang $.Site.Params.authoritativeLang }}{{ $default = .Permalink }}{{ end }}
+  {{- end }}
+  <link rel="alternate" hreflang="x-default" href="{{ $default }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:site_name" content="Pebril">
+  <meta property="og:locale" content="{{ if eq .Site.Language.Lang "zh" }}zh_CN{{ else }}en_US{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:image" content="https://pebril.dev/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@pebril_dev">
+  {{- with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ "fonts/pebril-kai.woff2" | relURL }}" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts/manrope.css">
+  <link rel="stylesheet" href="{{ "journal.css" | relURL }}">
+</head>
+<body>
+  <a class="skip" href="#main">{{ i18n "skip" }}</a>
+  <header class="masthead">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-en">Pebril</span><span class="brand-zh">{{ i18n "journal" }}</span></a>
+    <nav class="masthead-nav">
+      {{ partial "langswitch.html" . }}
+      <a href="/">{{ i18n "backToSite" }}</a>
+    </nav>
+  </header>
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="colophon">
+    <p>{{ with .Site.Params.tagline }}{{ . }}{{ end }}</p>
+    <p class="colophon-links">
+      <a href="https://github.com/kserksi/Pebril">{{ i18n "source" }}</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://x.com/pebril_dev">X</a>
+      <span aria-hidden="true">·</span>
+      <span>Pebril © 2026 kserksi · MIT</span>
+    </p>
+  </footer>
+</body>
+</html>

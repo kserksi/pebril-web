@@ -1,0 +1,20 @@
+# Pebril
+
+> Pebril is an open-source, self-hosted image management project, licensed under MIT and currently in early development.
+
+The website introduces Pebril and provides an interactive photograph timeline. The local-photo demonstration reads photographs and available capture dates only in the current browser session; it does not upload or persist them. Example photographs use fictional demonstration dates, not product release dates.
+
+The project is not ready for production use. Consult the public repository for current capabilities and limitations. Planned features are not available merely because they appear on a roadmap.
+
+## Project
+
+- [Website](https://pebril.dev/): Project introduction and browser-only photograph demonstration.
+- [Journal](https://pebril.dev/journal/): Notes on why Pebril exists, how it is designed, and what is still open. Chinese is authoritative; an English edition follows.
+- [Public README](https://github.com/kserksi/Pebril/blob/dev/README.md): Current development status, supported functionality, limitations and evaluation instructions.
+- [Source repository](https://github.com/kserksi/Pebril): Source code and contribution context.
+- [MIT license](https://github.com/kserksi/Pebril/blob/dev/LICENSE): Project license.
+
+## Optional
+
+- [Roadmap](https://github.com/kserksi/Pebril/issues?q=is%3Aissue%20label%3Aroadmap): Public plans; not a list of completed features.
+- [Project updates](https://x.com/pebril_dev): Official social account.

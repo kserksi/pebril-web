@@ -1,0 +1,9 @@
+{{- $page := . }}
+{{- $lang := .Site.Language.Lang }}
+{{- $others := where $page.AllTranslations "Language.Lang" "ne" $lang }}
+{{- if $others }}
+  {{- range $others }}<a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>
+  {{- end }}
+{{- else }}
+  {{- range hugo.Sites }}{{ if ne .Language.Lang $lang }}<a class="lang" href="{{ .Home.RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>{{ end }}{{ end }}
+{{- end }}
