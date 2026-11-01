@@ -2,7 +2,7 @@
 
 ## Scope and documentation
 
-Reference the relevant wiki page or spec section (`docs/24-通用设计规范.md`, `loning.md`). Identify proposed requirement changes separately.
+Reference the relevant wiki page or spec section ([design specification](https://github.com/kserksi/pebril-web/wiki/24-Design-System-Spec), `loning.md`). Identify proposed requirement changes separately.
 
 ## Validation
 

@@ -1,35 +1,34 @@
-# Pebril 溪石 · 官网与手记
+# Pebril Website and Journal
 
-Pebril 项目在正式版之前的宣发站点：一个安静、自由、可自托管的开源图片管理项目。
+The public-facing site for Pebril, a quiet, self-hostable photo library: a Prelude brand prologue, a photo river, a spring-rain gathering, a timeline explorer and a local-photo demo, closing into a short coda. A hand-built static site with no framework and no bundler.
 
-**Pebril Website and Journal.** A zero-build static site for the Pebril project: a quiet, self-hostable photo library. This repository is independent from the product repository; it shares the project's design language through [`docs/24-通用设计规范.md`](docs/24-通用设计规范.md).
+**Pebril Website and Journal.** A zero-build static site for the Pebril project. This repository is independent from the product repository; it shares the project's design language through the design wiki: [**PEB-DES-SYSTEM-001 · Design system specification**](https://github.com/kserksi/pebril-web/wiki/24-Design-System-Spec).
 
-- 仓库：<https://github.com/kserksi/pebril-web>（`dev` 开发，`main` 基线）
-- 站点：<https://pebril.dev>（未上线前的本地预览见下文）
+- Repository: <https://github.com/kserksi/pebril-web> (`dev` develops, `main` is the published baseline)
+- Site: <https://pebril.dev>
+- Design wiki: <https://github.com/kserksi/pebril-web/wiki>
 
 ---
 
-## 这里有什么
+## What is here
 
-| 路径 | 内容 |
+| Path | Contents |
 |---|---|
-| `index.html` | 首页：Prelude 品牌序章 → 相册与照片河流 → 春雨归集 → 时间轴 → 本地照片 → 收尾 |
-| `404.html` | 找不到页面时的落点：同一张纸，两条去路（回到首页 / 看一看手记） |
-| `src/` | 手写 ES module（无框架、无打包）；`photo-media.mjs` 管响应式图源，`boot.mjs` 管首帧启动 |
-| `assets/` | 示例照片（1920 原图 + 480/960 变体）、自托管字体、社交分享图、字体许可 |
-| `journal-src/` | 手记的 Hugo 源码（布局、i18n、中文/英文章节、文楷子集脚本入口） |
-| `journal/` | 手记的构建产物（静态 HTML/CSS/字体/RSS/sitemap），随仓库一起发布 |
-| `docs/` | 设计 Wiki：01–23 站内设计文档，**24 是跨官网与产品前端的通用设计规范** |
-| `qa/` | 测试与监控：Playwright 套件、性能/审计探针、截图产物（依赖与产物不入库） |
-| `tools/` | 本地工具链：字体子集、响应式照片变体脚本（二进制与 venv 不入库） |
-| `scripts/` | `check-site.py`：静态检查（本地引用、外链、CSP 哈希、sitemap、robots、图标），CI 的第一道门 |
-| `.github/` | CI 与 issue/PR 模板 |
-| `loning.md` | 首屏加载与品牌序章的动效规范 PEB-DES-MOTION-001 |
-| `AGENTS.md` | 本仓库的维护约定（给自动化代理与人看的同一份规则） |
+| `index.html` | Homepage: Prelude → album and photo river → spring-rain gathering → timeline → local photos → coda |
+| `404.html` | Where a missing page lands: the same paper, two ways back |
+| `src/` | Hand-written ES modules (no framework, no bundler); `photo-media.mjs` owns responsive sources, `boot.mjs` owns the first frame |
+| `assets/` | Sample photographs (1920 originals plus 480/960 variants), self-hosted fonts, share card, font licences |
+| `journal-src/` | Hugo source for the Journal (layouts, i18n, Chinese and English chapters, the Kai subset hook) |
+| `journal/` | Built Journal output (static HTML/CSS/fonts/RSS/sitemap), committed so the site publishes without a build |
+| `qa/` | Tests and monitoring: Playwright suites, perf/audit probes, screenshot artifacts (dependencies and artifacts are not committed) |
+| `tools/` | Local toolchain: font subsets, responsive photo variants (binaries and venvs are not committed) |
+| `scripts/` | `check-site.py`: static checks (local references, third-party requests, CSP hash, sitemap, robots, icons), the first gate in CI |
+| `.github/` | CI and issue/pull-request templates |
+| `loning.md` | Motion specification for the Prelude, PEB-DES-MOTION-001 |
 
-站点不打 bundle：直接以原生 ES module + 手写 CSS 发布，唯一需要构建的是手记。
+The site does not bundle: it publishes native ES modules and hand-written CSS. Only the Journal needs a build step.
 
-## 本地预览
+## Preview locally
 
 ```bash
 cd /path/to/pebril-web
@@ -37,34 +36,34 @@ python3 -m http.server 4173 --bind 127.0.0.1
 # http://127.0.0.1:4173/
 ```
 
-站点内全部使用绝对路径（`/assets/…`、`/src/…`），因此必须从仓库根启动，并部署在域名根路径下。
+Every site path is absolute (`/assets/…`, `/src/…`), so the server must start at the repository root and the site must be published at the domain root.
 
-## 手记
+## Journal
 
 ```bash
 tools/bin/hugo --source journal-src --cleanDestinationDir
 ```
 
-Hugo v0.169（二进制放在 `tools/bin/`，不入库）。产物写入 `journal/`；中英文、RSS、`sitemap.xml` 与 `hreflang` 都由 Hugo 生成。手记页面零脚本，跨页过渡由 CSS View Transitions 完成。
+Hugo v0.169 (the binary lives in `tools/bin/`, untracked). Output goes to `journal/`; Chinese and English editions, RSS, `sitemap.xml` and `hreflang` are all generated. Journal pages carry no scripts: page-to-page transitions are CSS View Transitions.
 
-新增或改动手记标题后，需要重建文楷标题子集，否则标题会退回系统楷体：
+After adding or renaming a Journal title, rebuild the Kai subset or headings fall back to a system kai:
 
 ```bash
-tools/build-kai-font.sh          # → journal-src/static/fonts/pebril-kai.woff2（当前 76 字 / 12KB）
-tools/build-brand-kai-font.sh    # → assets/fonts/wenkai.woff2（首页品牌与相册标题，200 字 / 45KB）
+tools/build-kai-font.sh          # → journal-src/static/fonts/pebril-kai.woff2
+tools/build-brand-kai-font.sh    # → assets/fonts/wenkai.woff2 (brand and album headings)
 ```
 
-## 检查与测试
+## Checks and tests
 
-最快的门（纯标准库，不用起服务）：
+The fast gate (standard library only, no server needed):
 
 ```bash
 python3 scripts/check-site.py
 ```
 
-它会核对页面里的本地引用是否都存在、有没有第三方资源、内联 `<style>` 的 CSP 哈希是否仍然匹配、`sitemap.xml` 是否与 canonical 一致、`robots.txt` 与 `llms.txt` 是否指对了地方、图标文件是否齐。手记有改动时再跑一次 `tools/bin/hugo --source journal-src --cleanDestinationDir` 并确认 `git diff --exit-code -- journal` 为空。
+It verifies that every local reference exists, that no third-party resource slipped in, that the inline `<style>` CSP hash still matches, that `sitemap.xml` agrees with canonical URLs, that `robots.txt` and `llms.txt` point at the right places and that the icon files are present. When the Journal changed, rebuild it and confirm `git diff --exit-code -- journal` is empty.
 
-完整回归（Playwright）：
+The full regression suite (Playwright):
 
 ```bash
 cd /path/to/pebril-web
@@ -73,39 +72,39 @@ PLAYWRIGHT_BROWSERS_PATH=$PWD/qa/browsers \
 node --test --test-concurrency=1 qa/tests/*.test.mjs
 ```
 
-- 必须**串行**：并行运行会让两三个依赖时序的浏览器套件出现假失败。
-- 手动跑单一套件：`node qa/tests/river.test.mjs`。
-- 部分套件由 `page.clock` 假时钟驱动，懒加载图片需要推进帧才会发请求——改测试时先看这一点。
-- 测试与探针的详细说明见 [`qa/README.md`](qa/README.md)。
-- 截图默认写入 `qa/artifacts/`（不入库）。
+- Run it **serially**: parallel runs make two or three timing-sensitive browser suites fail spuriously.
+- A single suite: `node qa/tests/river.test.mjs`.
+- Some suites drive a fake clock with `page.clock`; lazily loaded images only request once frames are advanced — check that before changing such a test.
+- Details in [`qa/README.md`](qa/README.md). Screenshots go to `qa/artifacts/` (untracked).
 
-## 重新生成资源
+## Regenerating assets
 
 ```bash
-tools/venvs/img/bin/python tools/resize-photos.py   # assets/photos/{480,960}/，Pillow 13
+tools/venvs/img/bin/python tools/resize-photos.py   # assets/photos/{480,960}/, Pillow 13
 ```
 
-字体子集需要完整文楷字体与 fonttools：把 `LXGWWenKai-Regular.ttf` 放到 `tools/fonts/`，venv 见 `tools/README.md`；两者的许可说明在 `assets/licenses/`。
+Font subsets need the full Kai typeface and fonttools: place `LXGWWenKai-Regular.ttf` in `tools/fonts/`; the venv is described in `tools/README.md`. Licences for both are in `assets/licenses/`.
 
-## 发布
+## Publishing
 
-静态文件整目录上传即可（不需要 Node、不需要数据库、不需要服务端语言）。前提：
+Upload the static files as they are — no Node, no database, no server-side language. Requirements:
 
-- **域名根路径**：站内路径是绝对的，放在子目录会 404。
-- **MIME**：`text/html`、`text/css`、`text/javascript`（`.mjs`）、`image/webp`、`font/woff2`、`application/xml`。
-- **目录索引与尾斜杠**：`/journal` 要 301 到 `/journal/`。
-- **HTTPS**：字体与 View Transitions 都要求安全上下文（local 与 127.0.0.1 除外）。
-- **响应头建议**：`Strict-Transport-Security`、`X-Content-Type-Options: nosniff`、`Content-Security-Policy: frame-ancestors 'none'`（页面内的 CSP 由 `<meta>` 提供，`frame-ancestors` 必须由响应头给）、HTML `no-cache`、`/assets/` 长缓存。
-- 不要发布 `docs/`、`journal-src/`、`qa/`、`tools/`、`scripts/`、`.github/`、`AGENTS.md`、`CONTRIBUTING.md`、`SECURITY.md`、`loning.md`，只发布站点文件。
+- **Domain root**: site paths are absolute; a subdirectory will 404.
+- **MIME**: `text/html`, `text/css`, `text/javascript` (`.mjs`), `image/webp`, `font/woff2`, `application/xml`.
+- **Directory index and trailing slash**: `/journal` must 301 to `/journal/`.
+- **HTTPS**: fonts and View Transitions both need a secure context (localhost and 127.0.0.1 excepted).
+- **404 page**: serve `404.html` with status **404**, not 200.
+- **Response headers**: `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, `Content-Security-Policy: frame-ancestors 'none'` (the in-page CSP comes from `<meta>`; `frame-ancestors` must be a header), `no-cache` for HTML, long caching for `/assets/`.
+- Do not publish `journal-src/`, `qa/`, `tools/`, `scripts/`, `.github/`, `CONTRIBUTING.md`, `SECURITY.md`, `loning.md` — only the site files.
 
-## 参与
+## Contributing
 
-开发约定、检查清单与资产再生成步骤见 [`CONTRIBUTING.md`](CONTRIBUTING.md)；安全问题走私报通道（[`SECURITY.md`](SECURITY.md)）。提交信息用英文 conventional 前缀，正常开发走 `dev` 分支。
+Conventions and checklists live in [`CONTRIBUTING.md`](CONTRIBUTING.md); report security issues privately ([`SECURITY.md`](SECURITY.md)). Commits use an English conventional prefix; development happens on `dev`.
 
-## 与父项目的关系
+## Relationship to the product
 
-Pebril 产品本体（Go 服务、存储、API）在另一个仓库。这里是它的宣发站点与手记；两边共享同一套设计语言，权威定义在 [`docs/24-通用设计规范.md`](docs/24-通用设计规范.md)——颜色、字体、间距、组件与动效的具体取值都在那里，产品前端按它实现界面。
+The Pebril product itself (Go service, storage, API) lives in another repository. This one is its public site and Journal; both share one design language, defined in the design wiki — colours, type roles, spacing, components and motion — which the product front-end implements against.
 
-## 许可
+## Licence
 
-[MIT](LICENSE) © 2026 kserksi。示例照片与字体的许可见 `assets/licenses/`。
+[MIT](LICENSE) © 2026 kserksi. Sample photographs and fonts are covered in `assets/licenses/`.

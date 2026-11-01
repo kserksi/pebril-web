@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-Check `docs/24-通用设计规范.md` and the relevant wiki page first; many behaviors are deliberate. Keep unconfirmed requirements as proposals rather than assumptions.
+Check the [design specification](https://github.com/kserksi/pebril-web/wiki/24-Design-System-Spec) and the relevant wiki page first; many behaviours are deliberate. Keep unconfirmed requirements as proposals rather than assumptions.
 
 ## Problem
 

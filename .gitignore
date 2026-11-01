@@ -15,3 +15,6 @@
 *.log
 .DS_Store
 Thumbs.db
+
+# Wiki source staged for the GitHub wiki (not part of the site)
+.wiki/
