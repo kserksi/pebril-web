@@ -18,7 +18,7 @@
 - 新布局：站点文件与 `docs/`、`journal-src/` 在仓库根；`qa/` 放测试、探针、截图产物；`tools/` 放 Hugo 二进制、文楷字体、资源脚本与 venv（依赖与二进制不入库）。
 - 路径随布局更新：`tools/bin/hugo --source journal-src --cleanDestinationDir`、`tools/build-brand-kai-font.sh`、`tools/build-kai-font.sh`、`tools/resize-photos.py`；测试统一从仓库根启动，Playwright 走 `qa/node_modules`。
 - 资源与体积不变：品牌文楷 45,492B（200 字）、手记文楷 11,936B（76 字）、照片 25 原图 6.19MB + 50 变体 2.44MB；页面仍无第三方请求。
-- 设计规范以 `docs/24-通用设计规范.md` 为准；本次只改路径表述，不改任何数值。
+- 设计规范以 [24-通用设计规范](24-Design-System-Spec.md) 为准（原 `docs/24-通用设计规范.md`，现为 Wiki 页）；本次只改路径表述，不改任何数值。
 
 ## 2026-11-01 · 通用设计规范（面向父项目前端）
 
