@@ -1,28 +1,28 @@
 # Pebril Web QA
 
-测试、性能监控、截图产物与浏览器工具链都放在这里，与站点文件分开：站点根目录（`index.html`、`src/`、`assets/`、`journal/`）只放会被部署的东西，`qa/` 不发布。
+Tests, performance monitoring, screenshot artefacts and the browser toolchain live here, apart from the site files: the site root (`index.html`, `src/`, `assets/`, `journal/`) contains only what gets deployed, and `qa/` is not published.
 
-## 目录
+## Layout
 
-| 路径 | 内容 |
+| Path | Contents |
 | --- | --- |
-| `tests/` | 21 个 `node:test` 套件（Playwright 端到端 + 纯几何/画像断言） |
-| `probes/` | 监控脚本：性能预算、手记审计、截图巡检、截帧对比 |
-| `artifacts/` | 测试与探针写出的截图（产物，gitignored） |
-| `node_modules/` | 固定版本 Playwright 1.64.1（只此一套，gitignored） |
-| `browsers/` | chromium headless shell 1248（gitignored） |
-| `libs/sysroot/` | WSL 下 Chromium 需要的系统库（`LD_LIBRARY_PATH` 指向它，gitignored） |
+| `tests/` | 21 `node:test` suites (Playwright end-to-end plus pure geometry/profile assertions) |
+| `probes/` | Monitoring scripts: performance budgets, journal audits, screenshot sweeps, frame comparison |
+| `artifacts/` | Screenshots written by tests and probes (artefacts, gitignored) |
+| `node_modules/` | Pinned Playwright 1.64.1 (the only copy, gitignored) |
+| `browsers/` | chromium headless shell 1248 (gitignored) |
+| `libs/sysroot/` | System libraries Chromium needs under WSL (`LD_LIBRARY_PATH` points here, gitignored) |
 
-## 起本地预览
+## Start a local preview
 
 ```bash
 cd /path/to/pebril-web
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
-需要每次刷新都取最新文件时，用带 `Cache-Control: no-store` 的小服务代替（任一静态服务器加该响应头即可）。
+When every refresh must pick up the latest files, use a small server that sends `Cache-Control: no-store` instead (any static server plus that header will do).
 
-## 跑全量测试（串行，约 6–7 分钟）
+## Run the full suite (serial, about 6-7 minutes)
 
 ```bash
 cd /path/to/pebril-web
@@ -31,48 +31,47 @@ PLAYWRIGHT_BROWSERS_PATH=$PWD/qa/browsers \
 node --test --test-concurrency=1 qa/tests/*.test.mjs
 ```
 
-- **必须串行**：并行跑时 `elastic-ruler`、`motion`、`visible-gathering` 偶发时序失败（负载下的假阳性，单跑全绿）。
-- 单独一个套件：把最后一行换成 `node qa/tests/river.test.mjs`。
-- 截图默认写进 `qa/artifacts/`；套件里的相对路径按「从仓库根（`index.html` 所在目录）启动」解析。
-- 所有套件都从**仓库根**启动，不要 `cd qa` 后再跑，否则相对路径与截图输出会错位。
+- **Serial is required**: when run in parallel, `elastic-ruler`, `motion` and `visible-gathering` occasionally fail on timing (false positives under load; each passes alone).
+- One suite at a time: replace the last line with `node qa/tests/river.test.mjs`.
+- Screenshots go to `qa/artifacts/`; relative paths inside the suites are resolved as if started from the repository root (the directory holding `index.html`).
+- Every suite starts from the **repository root**. Do not `cd qa` first, or relative paths and screenshot output will land in the wrong place.
 
-## 保留的巡检脚本
+## The probes kept in the repository
 
-`qa/probes/` 只留仍在用的六个，其余一次性调试脚本已删除（避免留下路径失效的死代码）：
+`qa/probes/` keeps only the five still in use; the other one-off debugging scripts were removed so no dead code with broken paths remains:
 
-| 脚本 | 用途 |
+| Script | Purpose |
 | --- | --- |
-| `perf-probe.mjs` | 首屏/整段滚动的传输字节与请求数 |
-| `audit-journal.mjs` | 手记四页的 lang、hreflang、字体与控制台 |
-| `deploy-check.mjs` | 对发布副本逐页检查 200、控制台、外链与站内链接 |
-| `vt-frames.mjs` | 跨页过渡截帧，用于和 `qa/artifacts/` 里的落地帧对比 |
-| `check-glyphs.mjs` | 品牌子集是否覆盖当前中文文案（缺字时列出） |
-| `check-spec-css.mjs` | 规范附录 A/B 的 CSS 是否能原样解析 |
+| `perf-probe.mjs` | Transfer bytes and request counts for the first screen and a full scroll |
+| `audit-journal.mjs` | `lang`, `hreflang`, fonts and console for the four journal pages |
+| `deploy-check.mjs` | Page-by-page 200s, console, external requests and internal links against a deploy copy |
+| `vt-frames.mjs` | Frames from the cross-page transition, to compare with the settled frames in `qa/artifacts/` |
+| `check-glyphs.mjs` | Whether the brand subset covers the current Chinese copy (lists missing characters) |
 
-## 性能与巡检
+## Performance and audits
 
 ```bash
 cd /path/to/pebril-web
 LD_LIBRARY_PATH=$PWD/qa/libs/sysroot/usr/lib/x86_64-linux-gnu \
 PLAYWRIGHT_BROWSERS_PATH=$PWD/qa/browsers \
-node qa/probes/perf-probe.mjs     # 首屏/滚动字节数与请求数
-node qa/probes/audit-journal.mjs  # 手记四页的 lang/hreflang/字体/控制台
-node qa/probes/vt-frames.mjs      # 跨页过渡截帧（配合 qa/artifacts/ 对比）
+node qa/probes/perf-probe.mjs     # first-screen and full-scroll bytes and requests
+node qa/probes/audit-journal.mjs  # lang/hreflang/fonts/console on the four journal pages
+node qa/probes/vt-frames.mjs      # cross-page transition frames (compare with qa/artifacts/)
 ```
 
-## 重新生成资源
+## Regenerate assets
 
-资源脚本在仓库根 `tools/`（不在 `qa/`）：
+The asset scripts live in `tools/` at the repository root, not in `qa/`:
 
-- 响应式照片（`assets/photos/480/`、`960/`）：`tools/venvs/img/bin/python tools/resize-photos.py`（Pillow 13）。
-- 品牌文楷子集（站点）：`tools/build-brand-kai-font.sh`。
-- 手记文楷子集：`tools/build-kai-font.sh`（新增或改名标题后要重跑，否则标题退回 KaiTi）。
+- Responsive photographs (`assets/photos/480/`, `960/`): `tools/venvs/img/bin/python tools/resize-photos.py` (Pillow 13).
+- Brand WenKai subset (site): `tools/build-brand-kai-font.sh`.
+- Journal WenKai subset: `tools/build-kai-font.sh` (rerun after adding or renaming a heading, or titles fall back to KaiTi).
 
-## 手记过渡的回归
+## Regression cover for the journal transition
 
-`qa/tests/journal-transition.browser.test.mjs` 用 `pagereveal` + 动画名证明跨文档视图过渡发生——手记内部为 `journal-arrive`，回到官网为 `site-arrive`——并单独跑一遍 `prefers-reduced-motion`。首页的 `@view-transition` 内联在 `index.html`（CSP 哈希），改这段字节要同步重算哈希；改 `journal-src/static/journal.css` 后记得重建手记。
+`qa/tests/journal-transition.browser.test.mjs` proves the cross-document view transition with `pagereveal` plus animation names - `journal-arrive` inside the journal, `site-arrive` on the way back to the site - and runs `prefers-reduced-motion` separately. The site's `@view-transition` rule is inline in `index.html` (CSP hash): changing those bytes means recomputing the hash. After editing `journal-src/static/journal.css`, rebuild the journal.
 
-## 约定
+## Conventions
 
-- 这些文件不属于站点；部署时整个 `qa/` 可以不发布。
-- 历史文档里的 `.qa/…`、`qa/pebril-web/…` 是 2026-11-01 迁移前的旧布局，现行布局以本文件为准。
+- None of these files belong to the site; the whole of `qa/` can be left out of a deployment.
+- Older documents mention `.qa/...` and `qa/pebril-web/...`; those describe the layout before the 2026-11-01 move. This file describes the current one.

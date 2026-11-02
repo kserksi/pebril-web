@@ -1,898 +1,878 @@
-# Pebril（溪石）加载与品牌序章动画设计规范
+# Pebril — Prelude and Loading Animation Specification
 
-**Pebril — Prelude & Loading Animation Specification**
-
-| 文档属性 | 内容 |
+| Document property | Content |
 |---|---|
-| 文档编号 | PEB-DES-MOTION-001 |
-| 版本 | v0.2 |
-| 更新日期 | 2026 年 10 月 24 日 |
-| 设计模块 | Prelude · 品牌序章 |
-| 设计基准 | 1920 × 1080 / 16:9 |
-| 文档状态 | 设计基准，待原型验证 |
-| 适用范围 | 预发布官网首页加载、品牌进入与滚动退场 |
-| 关联规范 | 《Pebril 预发布官网设计白皮书 v0.2》 |
+| Document number | PEB-DES-MOTION-001 |
+| Version | v0.2 |
+| Last updated | 24 October 2026 |
+| Module | Prelude · brand prologue |
+| Design baseline | 1920 × 1080 / 16:9 |
+| Status | Design baseline, to be verified in prototype |
+| Scope | Pre-release site: first load, brand entrance, scroll exit |
+| Related document | Pebril Pre-release Website Design White Paper v0.2 |
 
 ---
 
-## 01. 设计目标
+## 01. Design goals
 
-### 1.1 模块定位
+### 1.1 Where this module sits
 
-Prelude 是 Pebril 官网相册扉页之前的品牌序章，同时承担资源加载过渡界面的职责。
+Prelude is the brand prologue that precedes the album title page on the Pebril website, and it also serves as the resource-loading transition.
 
-其核心目标包括：
+Its core goals:
 
-1. 避免首屏关键资源未就绪时，用户看到元素缺失或尚未完成布局的网页。
-2. 将实际资源加载进度转化为同心圆的涟漪变化，使等待过程具有直观的视觉反馈。
-3. 通过简洁且连续的动画建立 Pebril 的品牌印象。
-4. 在稳定状态下，通过轻微呼吸和输入响应维持界面的生命感。
-5. 通过同心圆向单一直线的形态转变，为第二屏「时间漫游」中的时间轴建立视觉伏笔。
-6. 确保所有动画与用户滚动行为自然衔接。
+1. Keep people from seeing a page with missing elements or unfinished layout while first-screen resources are still arriving.
+2. Turn real loading progress into ripples on the concentric rings, so waiting has visible feedback.
+3. Build the brand impression through short, continuous animation.
+4. Once the state is stable, keep the page alive with a slight breathing motion and a response to input.
+5. Turn the concentric circles into a single line, preparing the timeline in the second screen, 时间漫游 (Time Roaming).
+6. Make every animation join naturally into the user's scrolling.
 
-### 1.2 核心设计理念
+### 1.2 Core design idea
 
-**Quietly Present. — 静静存在，恰如其分。**
+**Quietly Present. — present, quietly, in the right measure.**
 
-Prelude 不应成为高强度的动画表演。
+Prelude is not meant to be a show.
 
-整个模块遵循以下原则：
+The module follows these principles:
 
-- 安静而不沉闷。
-- 有生命力而不过度活跃。
-- 运动连续、自然，避免明显的机械感。
-- 资源加载进度必须具有真实的技术依据。
-- 自主动画不能干扰用户主动交互。
-- 视觉状态之间保持连续性。
-- 加载失败时不应阻止用户进入网站。
+- Quiet without being dull.
+- Alive without being busy.
+- Continuous, natural motion, without an obvious mechanical feel.
+- Loading feedback must rest on real technical state.
+- Self-running animation must not get in the way of what the user does.
+- Visual states stay continuous with one another.
+- A failed load must never block the way into the site.
 
-### 1.3 设计叙事
+### 1.3 Design narrative
 
-**浮现 → 涟漪平息 → 品牌交替 → 平静呼吸 → 圆环展开 → 汇聚成线 → 品牌归位。**
+**Emerge → ripples settle → brand alternation → calm breathing → rings unfold → gathered into a line → brand settles.**
 
-其中，「涟漪平息」反映资源加载过程，「平静呼吸」属于加载完成后的稳定状态。
+"Ripples settle" reflects resource loading; "calm breathing" is the stable state after loading finishes.
 
-两者具有不同的交互意义，不能混为同一种动画。
+They mean different things to the user and must never be treated as one animation.
 
 ---
 
-## 02. 静态视觉规范
+## 02. Static visual specification
 
-### 2.1 画布与构图
+### 2.1 Canvas and composition
 
-桌面端以用户提供的 PPT 原型图为视觉基准。
+The desktop layout follows the PPT prototype supplied by the owner.
 
-采用中央轴线构图。
+It uses a central-axis composition.
 
-主要视觉元素包括：
+The main elements are:
 
-- 暖白色背景。
-- 三个共享圆心的同心圆。
-- 位于圆心的品牌文字。
-- 不使用额外的显著装饰元素。
+- A warm white background.
+- Three concentric circles sharing one centre.
+- The brand text at the centre.
+- No extra decorative elements.
 
-首屏照片河流与时间轴交互控件不在 Prelude 初始状态中出现。
+The first-screen photo river and the timeline control are not part of the Prelude's initial state.
 
-### 2.2 同心圆
+### 2.2 Concentric circles
 
-三个圆环分别命名为：
+The three rings are named:
 
-- Ring I — 内圈
-- Ring II — 中圈
-- Ring III — 外圈
+- Ring I — inner ring
+- Ring II — middle ring
+- Ring III — outer ring
 
-三个圆环共享相同的圆心。
+All three share the same centre.
 
-以 PPT 构图为参考，三个圆环的初始半径比例约为：
+Following the PPT composition, the initial radii are roughly:
 
-**内圈 : 中圈 : 外圈 = 0.56 : 0.78 : 1**
+**inner : middle : outer = 0.56 : 0.78 : 1**
 
-精确比例需在原型中确认。
+The exact ratio is to be confirmed in the prototype.
 
-圆环采用细线描边，不使用实心填充。
+Rings are drawn with a thin stroke, never a solid fill.
 
-加载阶段允许圆环轮廓发生轻微波动，但必须保留整体同心结构。
+During loading the outline may waver slightly, but the concentric structure must remain.
 
-### 2.3 品牌文字
+### 2.3 Brand text
 
-中心包含两个独立文字图层：
+The centre holds two independent text layers:
 
 **Pebril**
 
-**溪石**
+**溪石** (Xishi, “creek stone”)
 
-字体沿用现有品牌规范：
+Both follow the existing brand rules:
 
-| 元素 | 字体 |
+| Element | Typeface |
 |---|---|
 | Pebril | Manrope |
-| 溪石 | 霞鹜文楷 |
+| 溪石 | LXGW WenKai |
 
-两个文字图层共享视觉中心，但不要求具有相同的文字宽度。
+The two layers share a visual centre; they do not need the same width.
 
-### 2.4 颜色
+### 2.4 Colour
 
-| 元素 | 参考值 |
+| Element | Reference |
 |---|---|
-| 背景 | `#F8F7F3` |
-| 品牌文字 | `#59666C` |
-| 圆环 | 低对比度中性灰 |
-| 辅助强调 | `#526B79` |
-
-涟漪效果优先通过圆环轮廓的微弱变化表达，不依赖强烈的色彩变化。
+| Background | `#F8F7F3` |
+| Brand text | `#59666C` |
+| Rings | low-contrast neutral grey |
+| Supporting accent | `#526B79` |
 
 ---
 
-## 03. 动画生命周期
+## 03. Animation lifecycle
 
-Prelude 分为四种主要状态。
+Prelude has four main states.
 
-| 状态 | 动画 | 触发条件 |
+| State | Animation | Enters when |
 |---|---|---|
-| Loading · 加载中 | P0 + Loading Ripple | 最小启动资源就绪，首屏资源持续加载 |
-| Entering · 进入 | P1 | 首屏关键资源全部就绪，涟漪平息 |
-| Idle · 稳定 | P2 + P3 | P1 完成 |
-| Exiting · 退出 | P4 + P5 | 用户主动向下滚动 |
+| Loading | P0 + Loading Ripple | Minimum start-up resources are ready; first-screen resources keep loading |
+| Entering | P1 | All critical first-screen resources are ready and the ripples have settled |
+| Idle | P2 + P3 | P1 has finished |
+| Exiting | P4 + P5 | The user scrolls down |
 
-### 3.1 运行顺序
+### 3.1 Sequence
 
-1. 浏览器打开 Pebril 官网。
-2. 最小启动资源准备完成。
-3. P0 开始播放，同心圆与 Pebril 浮现。
-4. 其他首屏关键资源继续加载，同心圆以涟漪强度反映加载进度。
-5. 随着进度提高，涟漪逐渐平息。
-6. 首屏关键资源准备完成，进入 P1。
-7. Pebril 渐隐，「溪石」渐显。
-8. 进入 P2、P3 的持续稳定状态。
-9. 用户向下滚动，触发 P4、P5。
-10. 同心圆归为单一直线并退场，Pebril 移动至导航栏中央。
-11. 正式相册扉页进入主要可见状态。
+1. The browser opens the Pebril site.
+2. Minimum start-up resources are ready.
+3. P0 plays; the rings and Pebril emerge.
+4. Other critical first-screen resources keep loading; the ripple strength reflects progress.
+5. As progress rises, the ripples settle.
+6. Critical first-screen resources are ready; P1 begins.
+7. Pebril fades out and 溪石 fades in.
+8. P2 and P3 hold the stable state.
+9. The user scrolls down, triggering P4 and P5.
+10. The rings gather into a single line and leave; Pebril moves to the centre of the navigation bar.
+11. The album title page becomes the dominant view.
 
-### 3.2 状态管理原则
+### 3.2 State management principles
 
-每种状态必须具有清晰的进入条件和退出条件。
+Every state must have a clear condition for entering and for leaving.
 
-P0 的显现动画与 Loading Ripple 可以部分重叠。
+P0's appearance animation and the loading ripple may overlap in part.
 
-P2 与 P3 并行运行。
+P2 and P3 run in parallel.
 
-P4 与 P5 共用同一滚动进度。
+P4 and P5 share a single scroll progress.
 
-所有状态切换应避免突然跳变。
+No state change may jump.
 
 ---
 
-## 04. Loading Ripple — 加载进度涟漪
+## 04. Loading Ripple — loading progress ripples
 
-**新增模块**
+**New module**
 
-本模块定义资源加载进度与同心圆视觉波动之间的关系。
+This module defines the relationship between resource loading progress and the visual waver of the rings.
 
-### 4.1 核心设计定义
+### 4.1 Core definition
 
-资源加载进度越低，同心圆的涟漪越明显。
+The less that has loaded, the more visible the ripple.
 
-随着资源逐渐加载完成，圆环的波动幅度持续减小。
+As resources arrive, the amplitude keeps falling.
 
-当首屏关键资源准备完成时，涟漪完全平息，三个圆环恢复为规则、平静的同心圆。
+When the critical first-screen resources are ready, the ripple settles completely and the three rings return to regular, calm circles.
 
-**加载进度越高，涟漪越趋近于平静。**
+**The further loading has gone, the closer the ripple is to stillness.**
 
-这是 Loading Ripple 的核心设计规则。
+That is the core rule of the Loading Ripple.
 
-### 4.2 涟漪的表现形式
+### 4.2 How the ripple shows
 
-加载期间，同心圆的半径并非完全固定。
+While loading, the radii are not entirely fixed.
 
-圆环轮廓允许出现幅度有限、连续传播的柔和波动。
+The outline may carry a gentle, continuously travelling waver of limited amplitude:
 
-具体表现为：
+- The rings keep their overall circular structure.
+- The outline may move faintly along the radius.
+- The waver travels smoothly, with no sharp corners.
+- There is no visible swirl, shatter, or strong distortion.
+- The three rings keep their basic ordering.
 
-- 圆环保持整体圆形结构。
-- 局部轮廓可以沿径向产生微弱位移。
-- 波动平滑传播，不出现尖锐折角。
-- 不产生明显的旋涡、碎裂或剧烈扭曲。
-- 不改变三个圆环的基本层级关系。
+The ripple should feel closer to a small disturbance on water than to an abstract audio spectrum.
 
-涟漪应更接近水面上的轻微扰动，而不是抽象的音频频谱图。
+### 4.3 Progress and strength
 
-### 4.3 加载进度与涟漪强度
+Definitions:
 
-定义：
+- `P`: share of critical first-screen resources loaded, 0–1.
+- `Amax`: the maximum allowed ripple amplitude.
+- `A(P)`: the current target amplitude.
 
-- `P`：首屏关键资源加载完成比例，范围为 0–1。
-- `Amax`：允许的最大涟漪振幅。
-- `A(P)`：当前目标涟漪振幅。
-
-建议第一轮采用非线性衰减关系：
+The first round uses a non-linear falloff:
 
 **A(P) = Amax × (1 − P)^1.35**
 
-该公式仅作为第一轮实验方案。
+The formula is a first experiment only.
 
-其设计意图是：
+The intent:
 
-加载初期具有适度可见的涟漪。
+Early on, the ripple is moderately visible.
 
-随着加载进度提高，波动逐渐减弱。
+As progress rises, it weakens.
 
-接近完成时，涟漪已基本趋于平静。
+Near completion it is nearly still.
 
-加载完成时，振幅为零。
+At completion the amplitude is zero.
 
-### 4.4 参考强度
+### 4.4 Reference strength
 
-| 加载进度 | 相对涟漪强度 |
+| Progress | Relative ripple strength |
 |---|---|
 | 0% | 100% |
-| 10% | 约 87% |
-| 25% | 约 67% |
-| 50% | 约 39% |
-| 75% | 约 15% |
-| 90% | 约 4% |
+| 10% | about 87% |
+| 25% | about 67% |
+| 50% | about 39% |
+| 75% | about 15% |
+| 90% | about 4% |
 | 100% | 0% |
 
-表中的涟漪强度是相对于 `Amax` 的比例，并非圆环半径变化百分比。
+These are fractions of `Amax`, not percentages of the radius.
 
-最大实际振幅需要通过原型验证。
+The real maximum amplitude is to be verified in the prototype.
 
-### 4.5 进度平滑
+### 4.5 Smoothing progress
 
-实际资源加载进度可能发生不均匀变化。
+Real progress arrives unevenly:
 
-例如：
+- Several photographs finish loading at once.
+- A font file arrives late.
+- An initialisation task completes abruptly.
 
-- 多张照片连续加载完成。
-- 某个字体资源延迟加载。
-- 某个初始化任务突然完成。
+None of these events may be turned straight into a sudden deformation.
 
-不得直接将这些离散事件转化为突兀的圆环变形。
+The system separates:
 
-系统应区分：
+**actual progress**
 
-**实际加载进度（Actual Progress）**
+**visual progress**
 
-**视觉显示进度（Visual Progress）**
+Visual progress follows actual progress smoothly, so amplitude never jumps.
 
-视觉进度应平滑追随实际进度，避免圆环振幅突然改变。
+Visual progress must never run ahead of what has actually been confirmed.
 
-视觉进度不得超前于实际确认完成的进度。
+At 100%, the rings ease back into regular circles rather than stopping dead.
 
-达到 100% 时，圆环应平滑恢复为规则圆形，而不是突然停止运动。
+### 4.6 Ripple and ring colour
 
-### 4.6 涟漪与圆环颜色
+During loading, the change should be carried by geometric waver.
 
-加载阶段的主要变化应由几何波动幅度体现。
+Ring colour stays broadly stable.
 
-圆环颜色保持总体稳定。
+If any colour change is used, it may only be a very slight change in opacity.
 
-如果需要增加颜色变化，只允许非常轻微的透明度变化。
+Colour flicker must not become the main signal of loading.
 
-不能让颜色闪烁成为加载状态的主要反馈方式。
+### 4.7 The end of loading
 
-### 4.7 加载结束
+When all critical first-screen resources are ready:
 
-当首屏关键资源全部准备完成：
+1. Actual progress reaches 100%.
+2. The amplitude eases to zero.
+3. The three rings return to complete concentric circles.
+4. P1, the brand text alternation, begins.
 
-1. 实际加载进度达到 100%。
-2. 涟漪振幅平滑衰减至零。
-3. 三个圆环恢复为完整同心圆。
-4. 系统触发 P1 品牌文字交替动画。
+A very short, natural visual transition between the settling and P1 is desirable.
 
-建议在涟漪平息和 P1 开始之间保留极短且自然的视觉过渡。
-
-不设置为了展示动画而强制延长的等待时间。
+No waiting time is added merely to show more animation.
 
 ---
 
-## 05. P0 — Initial Appearance
+## 05. P0 — initial appearance
 
-**初次显现**
+### 5.1 When it runs
 
-### 5.1 触发条件
+The minimum start-up resources are ready.
 
-最小启动资源准备完成。
+These are:
 
-这里的最小启动资源包括：
+- The Prelude's base HTML and CSS.
+- The rings' SVG or equivalent rendering resources.
+- The minimal animation control logic.
+- A typeface able to show the brand name, or a reliable fallback.
 
-- Prelude 基础 HTML 与 CSS。
-- 同心圆的 SVG 或等效渲染资源。
-- 最小动画控制逻辑。
-- 可用于显示品牌名称的字体或可靠回退字体。
+P0 does not wait for every first-screen photograph.
 
-P0 不需要等待全部首屏照片加载完毕。
+### 5.2 What it does
 
-### 5.2 动画行为
+The three rings and Pebril emerge in place.
 
-三个同心圆与 Pebril 在原始位置同步浮现。
+Opacity rises from 0 toward normal.
 
-初始透明度为 0，逐渐提高至正常状态。
+There is no visible movement, rotation, or scaling.
 
-不执行显著位移、旋转或缩放。
+### 5.3 Timing
 
-### 5.3 时间要求
+**About 1 second.**
 
-**约 1 秒。**
+### 5.4 Relationship to the loading ripple
 
-### 5.4 与 Loading Ripple 的关系
+P0 may overlap with loading.
 
-P0 可以与资源加载过程重叠。
+As its opacity rises, people see the ripple that matches the current progress.
 
-随着 P0 的透明度增加，用户逐渐看见当前加载进度对应的涟漪状态。
+The ripple's amplitude comes from resource progress, not from P0's playback time.
 
-Loading Ripple 的波动幅度由资源进度决定，而不是由 P0 的播放时间决定。
+### 5.5 When loading is fast
 
-### 5.5 快速加载情况
+If the critical resources are ready before Prelude appears, the page may show calm rings and go straight to the brand alternation.
 
-如果关键资源在 Prelude 显现前已经完成加载，可以直接展示平静圆环并进入品牌交替。
-
-不得为了展示加载涟漪而人为降低进度或增加等待。
+Progress must never be slowed, or waiting added, just to show the ripples.
 
 ---
 
-## 06. P1 — Brand Alternation
+## 06. P1 — brand alternation
 
-**品牌文字交替**
+### 6.1 When it runs
 
-### 6.1 触发条件
+All of the following hold:
 
-同时满足：
+- P0 has finished or ended safely.
+- The critical first-screen resources are ready.
+- The loading ripple has settled.
 
-- P0 已完成或已安全结束。
-- 首屏关键资源准备完成。
-- Loading Ripple 已恢复平静。
+### 6.2 What it does
 
-### 6.2 动画行为
+The centre text changes from Pebril to 溪石.
 
-中心文字由 Pebril 转变为「溪石」。
+Pebril begins to fade out.
 
-Pebril 开始降低透明度。
+溪石 begins to fade in at the same time.
 
-「溪石」同步开始增加透明度。
+The two fades overlap in time.
 
-两个文字图层的渐隐和渐显存在时间重叠。
+### 6.3 Timing
 
-### 6.3 时间要求
+**About 1 second.**
 
-**约 1 秒。**
+### 6.4 End state
 
-### 6.4 结束状态
+- Pebril is fully hidden.
+- 溪石 is fully visible.
+- The three rings stay complete.
+- The system enters Idle.
 
-- Pebril 完全隐藏。
-- 「溪石」完整显示。
-- 三个同心圆保持完整。
-- 系统进入 Idle 状态。
+### 6.5 Constraints
 
-### 6.5 设计限制
+Both text layers keep a stable centre.
 
-两个文字图层必须保持中心稳定。
-
-不得突然替换文本或产生明显布局偏移。
+The text must not be swapped abruptly, and no layout shift may appear.
 
 ---
 
-## 07. P2 — Ripple Interaction
+## 07. P2 — ripple interaction
 
-**交互涟漪**
+### 7.1 When it runs
 
-### 7.1 触发条件
+P1 has finished and the system is Idle.
 
-P1 完成，系统进入 Idle 状态。
+### 7.2 What it does
 
-### 7.2 动画行为
+The rings answer user input with a slight ripple.
 
-同心圆可以响应用户输入，产生轻微涟漪反馈。
+Input may include:
 
-交互形式可包括：
+- Pointer approaching or moving.
+- Pointer click.
+- Touch.
 
-- 鼠标靠近或移动。
-- 鼠标点击。
-- 触摸输入。
+The exact triggers and hit areas are decided during prototyping.
 
-具体触发条件和交互区域由原型验证决定。
+### 7.3 Difference from the loading ripple
 
-### 7.3 与 Loading Ripple 的区别
+The loading ripple's amplitude comes from resource progress.
 
-Loading Ripple 的振幅由资源加载进度控制。
+P2's ripple comes from user input.
 
-P2 的涟漪由用户输入触发。
+**Loading ripples and interaction ripples are two separate logical modules.**
 
-**加载涟漪与交互涟漪是两个独立的逻辑模块。**
+P2 must not keep reading loading progress as its source.
 
-P2 不应继续读取加载进度作为波动来源。
+### 7.4 Constraints
 
-### 7.4 交互限制
+Feedback from input decays quickly and gently.
 
-用户输入产生的反馈应快速、柔和地衰减。
+Amplitude must not accumulate without limit.
 
-不得无限累积振幅。
+Feedback must not disturb the scroll exit that follows.
 
-不得影响后续滚动退出动画。
-
-交互反馈的设计语言参考白皮书 Phase 5 · Quiet Closure 中的轻微扰动原则。
+The design language follows the small-disturbance principle in the white paper's Phase 5 · Quiet Closure.
 
 ---
 
-## 08. P3 — Breathing Rings
+## 08. P3 — breathing rings
 
-**同心圆呼吸**
+### 8.1 When it runs
 
-### 8.1 触发条件
+Together with P2, in the stable state.
 
-与 P2 同时进入稳定状态。
+### 8.2 What it does
 
-### 8.2 动画行为
+The three regular rings expand and contract slowly.
 
-三个规则同心圆进行缓慢扩张与收缩。
+While expanding:
 
-扩张时：
+- Radii increase gradually.
+- Colour or opacity lightens slightly.
 
-- 圆环半径逐渐增加。
-- 颜色或透明度轻微变淡。
+While contracting:
 
-收缩时：
+- Radii return gradually.
+- Colour or opacity returns to the initial state.
 
-- 圆环半径逐渐恢复。
-- 颜色或透明度恢复初始状态。
+### 8.3 Suggested parameters
 
-### 8.3 建议参数
-
-| 参数 | 第一轮建议 |
+| Parameter | First-round suggestion |
 |---|---|
-| 呼吸周期 | 5–7 秒 |
-| 半径变化 | 约 ±1%–2% |
-| 缓动 | 柔和、周期连续 |
-| 相位差 | 微小或同步，待验证 |
-| 循环 | 连续，无跳变 |
+| Breathing period | 5–7 s |
+| Radius change | about ±1%–2% |
+| Easing | soft, continuous across cycles |
+| Phase offset | small or none, to be verified |
+| Loop | continuous, without a seam |
 
-### 8.4 与加载状态的区别
+### 8.4 Difference from the loading state
 
-Loading Ripple 是不规则轮廓扰动逐渐消失。
+The loading ripple is an irregular outline disturbance that fades away.
 
-P3 是规则圆环整体半径的缓慢周期变化。
+P3 is a slow, regular change of the whole radius.
 
-两者不能表现为完全相同的动画效果。
+They must never look like the same animation.
 
-### 8.5 与交互涟漪的关系
+### 8.5 Relationship to interaction ripples
 
-P2 可以在 P3 的基础上叠加轻微扰动。
+P2 may add a small disturbance on top of P3.
 
-主动输入优先于自主呼吸。
+Deliberate input takes precedence over the autonomous breathing.
 
-进入 P4 时，P2 和 P3 均需平滑让位。
-
----
-
-## 09. P4 — Circle to Line
-
-**同心圆归线**
-
-### 9.1 触发条件
-
-用户主动向下滚动。
-
-动画进度由用户滚动位置决定。
-
-### 9.2 核心定义
-
-**三个同心圆从外圈到内圈依次在顶部断开，沿连续轨迹展开，最终汇聚为唯一一条水平直线。**
-
-最终不是三条平行线。
-
-也不是三个圆分别消失后再生成新线条。
-
-### 9.3 动画分解
-
-**Step A — 顶部断开**
-
-最外圈首先在顶部断开。
-
-中圈随后断开。
-
-内圈最后断开。
-
-三个动作可存在少量时间重叠。
-
-**Step B — 圆环展开**
-
-断开的圆环沿连续曲线逐渐展开。
-
-保留可感知的形态转换过程。
-
-不采用瞬间形态替换。
-
-**Step C — 三环归一**
-
-展开后的三个圆环逐渐靠近共同的水平基准线。
-
-最终形成一条完整的水平直线。
-
-该过程应保留视觉连续性，不出现突然消失、重复线条闪烁等问题。
-
-**Step D — 线条退场**
-
-统一的水平线向画面下方移动。
-
-移动过程中，透明度逐渐降低。
-
-最终完全离开主要视觉区域。
-
-### 9.4 与时间轴的关系
-
-本阶段形成的水平线是第二屏「时间漫游」中时间轴的视觉伏笔。
-
-Prelude 的线条代表从涟漪到秩序的变化。
-
-第二屏重新显现的时间轴则具有实际的时间刻度与交互功能。
-
-两者在设计语言上连续，但不必由同一个图形元素贯穿所有场景。
-
-### 9.5 技术方向
-
-建议使用 SVG 路径变形等能够精确控制曲线的方法。
-
-GSAP 可用于管理滚动进度、透明度、位置及状态变化。
-
-具体展开算法需单独制作技术验证原型。
+On entering P4, both P2 and P3 give way smoothly.
 
 ---
 
-## 10. P5 — Brand Transition
+## 09. P4 — circle to line
 
-**品牌归位**
+### 9.1 When it runs
 
-### 10.1 触发条件
+The user scrolls down deliberately.
 
-与 P4 同步触发。
+Animation progress follows the scroll position.
 
-使用同一个滚动进度。
+### 9.2 Core definition
 
-### 10.2 动画行为
+**The three rings break at the top in turn, from outermost to innermost, unfold along continuous paths, and gather into one horizontal line.**
 
-中心文字「溪石」逐渐隐藏。
+The result is not three parallel lines.
 
-Pebril 重新显现，并逐渐移动到导航栏中央位置。
+Nor do the three circles vanish and new lines appear afterwards.
 
-### 10.3 结束状态
+### 9.3 Breakdown
 
-- 「溪石」完全隐藏。
-- Pebril 位于顶部导航栏中央。
-- 同心圆完成归线和退场。
-- 相册扉页成为主要可见场景。
+**Step A — break at the top**
 
-### 10.4 设计约束
+The outer ring breaks first.
 
-品牌文字的位置变化应连续。
+The middle ring follows.
 
-字体大小允许平滑调整，以适应导航栏布局。
+The inner ring breaks last.
 
-不得突然替换文字节点造成视觉跳变。
+The three may overlap slightly in time.
 
-P4 和 P5 必须保持统一的滚动控制逻辑。
+**Step B — unfold**
 
----
+The broken rings unfold along continuous curves.
 
-## 11. 滚动行为规范
+The transformation stays perceptible.
 
-### 11.1 基本要求
+The shape is never swapped in an instant.
 
-P4、P5 由滚动进度控制。
+**Step C — gather into one**
 
-用户停止滚动时，画面应稳定在当前状态。
+The unfolded rings approach a shared horizontal baseline.
 
-用户向上滚动时，应支持反向恢复。
+They end as one complete horizontal line.
 
-### 11.2 反向过程
+Visual continuity holds throughout: nothing vanishes abruptly, no doubled lines flicker.
 
-P4 反向恢复：
+**Step D — the line leaves**
 
-水平线重新展开为弧线，再逐渐恢复三个完整同心圆。
+The single horizontal line travels downward.
 
-P5 反向恢复：
+Opacity falls as it moves.
 
-Pebril 从导航栏方向返回中心过渡区域并渐隐，「溪石」重新显现。
+It finally leaves the main visual area.
 
-最终恢复 Idle 状态。
+### 9.4 Relationship to the timeline
 
-### 11.3 加载期间的滚动
+The line created here is the visual foreshadowing of the timeline on the second screen, 时间漫游.
 
-由于 Loading Ripple 需要在加载过程中保持可见，加载期间的滚动处理必须避免进入尚未准备好的页面。
+Prelude's line stands for the change from ripple to order.
 
-建议在 Loading 状态下暂不允许触发 P4、P5，但不应造成永久滚动锁定。
+The timeline that reappears on the second screen carries real ticks and interaction.
 
-关键资源就绪、品牌进入流程完成后，恢复正常滚动控制。
+They are continuous in design language, but one graphic element need not span every scene.
 
-具体操作方案与提前滚动输入的处理仍需原型验证。
+### 9.5 Technical direction
 
-### 11.4 多种输入方式
+SVG path morphing, or another method with exact control over curves, is recommended.
 
-需要覆盖：
+GSAP can manage scroll progress, opacity, position, and state changes.
 
-- 鼠标滚轮。
-- 触控板。
-- 触摸滚动。
-- 键盘滚动操作。
-
-不得仅依赖鼠标 Hover 完成页面导航。
+The unfolding algorithm needs its own technical prototype.
 
 ---
 
-## 12. 资源加载与技术规范
+## 10. P5 — brand transition
 
-### 12.1 资源分级
+### 10.1 When it runs
 
-**启动资源（Bootstrap）**
+Together with P4.
 
-负责尽快显示 Prelude 的基本构图及加载反馈。
+It shares the same scroll progress.
 
-**首屏关键资源（Critical）**
+### 10.2 What it does
 
-包括首屏需要的字体、照片、布局及关键动画初始化。
+The centre text 溪石 hides gradually.
 
-这些资源的准备状态决定 Loading Ripple 的完成进度。
+Pebril reappears and moves to the centre of the navigation bar.
 
-**后续资源（Deferred）**
+### 10.3 End state
 
-包括后续图片集、Journal 及非首屏功能。
+- 溪石 is fully hidden.
+- Pebril sits at the centre of the top navigation bar.
+- The rings have gathered and left.
+- The album title page is the dominant view.
 
-它们不应阻止 Prelude 进入完成状态。
+### 10.4 Constraints
 
-### 12.2 加载进度计算
+The brand text moves continuously.
 
-浏览器没有天然统一的整个网站加载百分比。
+Its size may be adjusted smoothly to suit the navigation bar.
 
-因此，必须建立明确的关键资源任务清单。
+No text node may be swapped in a way that makes the layout jump.
 
-加载进度应依据实际任务完成情况计算。
-
-可以按资源类型设置合理权重，但权重需与实际准备工作相对应。
-
-不允许通过固定定时器虚构百分比。
-
-### 12.3 加载进度的基本约束
-
-- 实际进度保持单调不减。
-- 视觉进度平滑追随实际进度。
-- 进度达到 100% 代表所有规定的关键任务均已完成或安全降级。
-- 不能出现加载失败导致进度永久停滞。
-- 不因非关键资源延迟而延长等待。
-
-### 12.4 快速加载与缓存
-
-对于资源已缓存、首屏快速就绪的情况，允许省略明显的 Loading Ripple 过程。
-
-避免仅为播放动画而人为增加等待时间。
-
-### 12.5 加载异常
-
-如果部分关键照片加载失败，可使用可用的替代资源或降级构图。
-
-如果品牌字体加载失败，可以启用字体回退。
-
-如果动画系统初始化失败，应允许直接进入可访问的静态首屏。
-
-不能因为 Prelude 自身的脚本错误，让用户永久停留在等待页面。
-
-### 12.6 最小依赖原则
-
-Prelude 的启动界面应尽量减少外部资源依赖。
-
-同心圆绘制及最小状态控制不应等待全部网站脚本执行完毕才能显示。
+P4 and P5 share one scroll control.
 
 ---
 
-## 13. 响应式与可访问性
+## 11. Scroll behaviour
 
-### 13.1 桌面端
+### 11.1 Basics
 
-以 PPT 的 1920 × 1080 构图为主要基准。
+P4 and P5 follow scroll progress.
 
-保持圆环中心、品牌文字和整体留白关系。
+When scrolling stops, the frame holds its state.
 
-### 13.2 移动端
+Scrolling back up restores the earlier state.
 
-允许重新调整圆环尺寸与构图。
+### 11.2 Restoration
 
-应单独验证圆环是否允许部分超出屏幕边界。
+P4 in reverse:
 
-不得造成非预期横向滚动。
+The horizontal line unfolds back into arcs, then into three complete circles.
 
-### 13.3 减少动态效果
+P5 in reverse:
 
-启用 `prefers-reduced-motion` 时：
+Pebril returns from the navigation bar toward the centre and fades out, while 溪石 reappears.
 
-- 禁用或明显弱化持续呼吸。
-- 禁用交互涟漪。
-- 使用简化的加载状态反馈。
-- 简化复杂的圆环路径变形。
-- 保留正常页面导航。
+The system returns to Idle.
 
-### 13.4 可访问性
+### 11.3 Scrolling while loading
 
-品牌文字保留真实文本语义。
+The loading ripple has to stay visible during loading, so scrolling must not let people into pages that are not ready.
 
-同心圆作为装饰元素不向屏幕阅读器重复提供信息。
+During Loading, P4 and P5 should not be triggered, but scrolling must not be locked for good.
 
-加载状态可以通过可访问的状态文本表达，不应仅依赖圆环形态让用户判断进度。
+Once the critical resources are ready and the brand entrance has finished, normal scroll control resumes.
+
+The exact handling of early scroll input is still to be verified in the prototype.
+
+### 11.4 Input methods
+
+These must all work:
+
+- Mouse wheel.
+- Trackpad.
+- Touch scrolling.
+- Keyboard scrolling.
+
+Navigation must never depend on hover alone.
 
 ---
 
-## 14. 技术实现建议
+## 12. Resource loading and technical rules
 
-### 14.1 技术候选
+### 12.1 Resource tiers
 
-- HTML / CSS：页面结构与文字。
-- SVG：同心圆及曲线形态。
-- JavaScript：关键资源进度统计。
-- GSAP：动画时间线。
-- ScrollTrigger：滚动控制。
+**Bootstrap**
 
-具体动画库及实现细节在技术验证阶段确定。
+Shows the Prelude's basic composition and loading feedback as early as possible.
 
-### 14.2 模块划分
+**Critical**
 
-建议将 Prelude 拆分为以下逻辑单元：
+The fonts, photographs, layout, and key animation initialisation the first screen needs.
 
-| 模块 | 职责 |
+Their readiness decides when the loading ripple completes.
+
+**Deferred**
+
+Later collections, the Journal, and anything not on the first screen.
+
+They must not hold the Prelude back from completing.
+
+### 12.2 Calculating progress
+
+The browser offers no natural, site-wide loading percentage.
+
+So an explicit list of critical tasks is required.
+
+Progress is computed from tasks actually completed.
+
+Weights by resource type are allowed, provided they match the real work.
+
+A fixed timer must never invent a percentage.
+
+### 12.3 Constraints on progress
+
+- Actual progress never goes backwards.
+- Visual progress follows it smoothly.
+- 100% means every listed critical task has completed or degraded safely.
+- A failed load must not stall progress forever.
+- A slow non-critical resource must not extend the wait.
+
+### 12.4 Fast loads and cache
+
+When resources are cached and the first screen is ready at once, the visible loading ripple may be skipped.
+
+No waiting is added merely to play the animation.
+
+### 12.5 Failure
+
+If a critical photograph fails, an available substitute or a degraded composition may be used.
+
+If the brand typeface fails, the fallback takes over.
+
+If the animation system fails to initialise, the page must fall back to an accessible static first screen.
+
+A script error inside Prelude must never leave someone waiting forever.
+
+### 12.6 Minimal dependencies
+
+The start-up screen should depend on as few external resources as possible.
+
+Drawing the rings and controlling the basic state must not wait for the whole site script.
+
+---
+
+## 13. Responsive behaviour and accessibility
+
+### 13.1 Desktop
+
+The 1920 × 1080 PPT composition is the main baseline.
+
+Keep the ring centre, the brand text, and the whitespace in proportion.
+
+### 13.2 Mobile
+
+Ring size and composition may be reworked.
+
+Whether rings may extend past the screen edge needs separate verification.
+
+Unintended horizontal scrolling is never acceptable.
+
+### 13.3 Reduced motion
+
+With `prefers-reduced-motion`:
+
+- The continuous breathing is disabled or much weaker.
+- Interaction ripples are disabled.
+- A simplified loading state is used.
+- Complex path morphing is simplified.
+- Normal navigation still works.
+
+### 13.4 Accessibility
+
+The brand text keeps its real text semantics.
+
+The rings are decorative and add no repeated information for screen readers.
+
+Loading state is available as accessible text; progress must not rest on the shape of the rings alone.
+
+---
+
+## 14. Technical implementation recommendations
+
+### 14.1 Technology Candidates
+
+- HTML / CSS: page structure and text.
+- SVG: concentric circles and curved forms.
+- JavaScript: progress accounting for critical resources.
+- GSAP: animation timeline.
+- ScrollTrigger: scroll control.
+
+The specific animation libraries and implementation details are determined during the technical verification phase.
+
+### 14.2 Module Breakdown
+
+Prelude is proposed to be split into the following logical units:
+
+| Module | Responsibility |
 |---|---|
-| Resource Loader | 首屏关键资源准备与进度计算 |
-| Loading Ripple | 加载进度到涟漪振幅的映射 |
-| Prelude State | 动画状态管理 |
-| Ring Renderer | 同心圆及几何形态 |
-| Brand Transition | Pebril / 溪石交替与归位 |
-| Interaction Controller | 鼠标与触摸反馈 |
-| Scroll Controller | 退出及反向滚动 |
+| Resource Loader | First-screen critical resource preparation and progress calculation |
+| Loading Ripple | Mapping from loading progress to ripple amplitude |
+| Prelude State | Animation state management |
+| Ring Renderer | Concentric circles and geometric forms |
+| Brand Transition | Alternation and settling of Pebril / 溪石 (Creek Stone) |
+| Interaction Controller | Mouse and touch feedback |
+| Scroll Controller | Exit and reverse scrolling |
 
-### 14.3 动画控制原则
+### 14.3 Animation Control Principles
 
-加载涟漪、交互涟漪和呼吸效果可以共享圆环渲染系统，但必须区分状态来源。
+Loading ripples, interaction ripples, and the breathing effect may share the ring rendering system, but their state sources must be distinguished.
 
-不得让多个独立动画同时竞争控制同一个几何属性。
+Multiple independent animations must not compete to control the same geometric property at the same time.
 
-P4 开始后，应由滚动时间线接管圆环的主要几何状态。
+After P4 begins, the scroll timeline should take over the ring's primary geometric state.
 
-### 14.4 性能要求
+### 14.4 Performance Requirements
 
-持续涟漪和呼吸应控制绘制成本。
+Sustained ripples and breathing should keep drawing cost under control.
 
-优先避免频繁触发布局计算。
+Avoiding frequent layout recalculation takes priority.
 
-动画性能须在桌面和移动端实际验证。
-
----
-
-## 15. 原型开发与验收
-
-### Milestone A — 加载与进入
-
-**范围：P0、Loading Ripple、P1**
-
-- [ ] 初始构图符合 PPT。
-- [ ] P0 同心圆与 Pebril 平滑浮现。
-- [ ] 资源加载时出现适度涟漪。
-- [ ] 涟漪振幅与真实资源加载进度相关。
-- [ ] 进度增加时，波动总体持续减弱。
-- [ ] 进度更新不会造成突然跳变。
-- [ ] 资源加载完成时，同心圆恢复平静。
-- [ ] P1 在加载完成后正确触发。
-- [ ] Pebril 与「溪石」平滑交替。
-- [ ] 快速加载时不产生不必要的等待。
-- [ ] 加载异常时能够安全降级。
-
-### Milestone B — 稳定状态
-
-**范围：P2、P3**
-
-- [ ] 用户输入能够产生柔和涟漪反馈。
-- [ ] 呼吸运动平稳、自然。
-- [ ] 呼吸幅度不会破坏整体构图。
-- [ ] 涟漪交互与自主呼吸能够协调运行。
-- [ ] 不存在明显动画循环重置。
-- [ ] 输入反馈不会产生过度振荡。
-
-### Milestone C — 退场与场景衔接
-
-**范围：P4、P5**
-
-- [ ] 圆环按照外、中、内顺序断开。
-- [ ] 圆环展开路径连续。
-- [ ] 三个圆环最终形成唯一水平直线。
-- [ ] 水平线向下移动并逐渐淡出。
-- [ ] 「溪石」逐渐隐藏。
-- [ ] Pebril 平滑移动至导航栏中央。
-- [ ] P4、P5 使用统一滚动进度。
-- [ ] 用户停止滚动时画面稳定。
-- [ ] 反向滚动能够恢复此前状态。
-- [ ] 与相册扉页衔接自然。
-- [ ] 为后续时间轴建立清晰的视觉伏笔。
-
-### Milestone D — 完整体验验证
-
-- [ ] 首次访问时资源不会明显缺失。
-- [ ] 缓存访问时能够快速进入。
-- [ ] 慢速网络环境下涟漪反馈合理。
-- [ ] 加载失败时不发生永久等待。
-- [ ] 桌面、平板、手机构图合理。
-- [ ] 减少动态效果模式正常。
-- [ ] 快速滚动及反向滚动不发生状态冲突。
-- [ ] 在关键资源就绪前不会错误显示正式首屏。
+Animation performance must be verified on real desktop and mobile devices.
 
 ---
 
-## 16. 已确认事项与待验证事项
+## 15. Prototyping and acceptance
 
-### 16.1 已确认设计要求
+### Milestone A — Loading and Entry
 
-1. Prelude 位于正式相册扉页之前。
-2. 初始构图为中央品牌文字与三个同心圆。
-3. P0 为约 1 秒的初始浮现动画。
-4. 加载期间，同心圆具有与资源加载进度关联的涟漪。
-5. **资源加载进度越高，涟漪越趋近于平静。**
-6. 首屏关键资源准备完成后，触发 P1。
-7. P1 为约 1 秒的 Pebril 与「溪石」交叠渐变。
-8. P2 和 P3 为稳定状态下的交互涟漪与自主呼吸。
-9. P4、P5 由用户向下滚动触发。
-10. 三个圆环从外到内依次在顶部断开。
-11. 三个圆环最终汇聚为唯一的水平直线。
-12. 直线向下移动并逐渐淡出。
-13. 该直线为后续时间轴提供视觉伏笔。
-14. 「溪石」在退场时隐藏，Pebril 移动至导航栏中央。
-15. 滚动退场动画必须支持反向恢复。
+**Scope: P0, Loading Ripple, P1**
 
-### 16.2 待验证事项
+- [ ] The initial composition matches the PPT.
+- [ ] P0 concentric circles and Pebril emerge smoothly.
+- [ ] A moderate ripple appears while resources load.
+- [ ] Ripple amplitude correlates with actual resource loading progress.
+- [ ] As progress increases, the fluctuation steadily weakens overall.
+- [ ] Progress updates do not cause abrupt jumps.
+- [ ] When resource loading completes, the concentric circles return to calm.
+- [ ] P1 triggers correctly after loading completes.
+- [ ] Pebril and 溪石 alternate smoothly.
+- [ ] Fast loading does not produce unnecessary waiting.
+- [ ] The page degrades safely when loading fails.
 
-| 项目 | 当前状态 |
+### Milestone B — Stable State
+
+**Scope: P2, P3**
+
+- [ ] User input produces soft ripple feedback.
+- [ ] The breathing motion is steady and natural.
+- [ ] The breathing amplitude does not disrupt the overall composition.
+- [ ] Ripple interaction and autonomous breathing run in coordination.
+- [ ] There are no visible animation loop resets.
+- [ ] Input feedback does not produce excessive oscillation.
+
+### Milestone C — Exit and Scene Transition
+
+**Scope: P4, P5**
+
+- [ ] The rings break in the order outer, middle, inner.
+- [ ] The rings' unfolding paths are continuous.
+- [ ] The three rings finally form a single horizontal straight line.
+- [ ] The horizontal line moves downward and gradually fades out.
+- [ ] 溪石 gradually hides.
+- [ ] Pebril moves smoothly to the center of the navigation bar.
+- [ ] P4 and P5 use a unified scroll progress.
+- [ ] The frame is stable when the user stops scrolling.
+- [ ] Reverse scrolling restores the previous state.
+- [ ] The transition into the album cover page is natural.
+- [ ] A clear visual foreshadowing is established for the subsequent timeline.
+
+### Milestone D — Full Experience Verification
+
+- [ ] Resources are not visibly missing on first visit.
+- [ ] Cached visits enter quickly.
+- [ ] Ripple feedback is appropriate on slow networks.
+- [ ] No permanent waiting occurs when loading fails.
+- [ ] The composition is appropriate on desktop, tablet, and phone.
+- [ ] Reduced motion mode works correctly.
+- [ ] Fast scrolling and reverse scrolling do not cause state conflicts.
+- [ ] The formal first screen is not shown incorrectly before critical resources are ready.
+
+---
+
+## 16. Confirmed decisions and open questions
+
+### 16.1 Confirmed Design Requirements
+
+1. The Prelude precedes the formal album cover page.
+2. The initial composition is the central brand text with three concentric circles.
+3. P0 is an initial emergence animation of about 1 second.
+4. During loading, the concentric circles carry ripples tied to resource loading progress.
+5. **The higher the resource loading progress, the closer the ripples come to calm.**
+6. P1 triggers after the first-screen critical resources are ready.
+7. P1 is a crossfade between Pebril and 溪石 of about 1 second.
+8. P2 and P3 are interaction ripples and autonomous breathing in the stable state.
+9. P4 and P5 are triggered by the user scrolling down.
+10. The three rings break at the top in sequence, from outside to inside.
+11. The three rings finally converge into a single horizontal straight line.
+12. The line moves downward and gradually fades out.
+13. This line provides visual foreshadowing for the subsequent timeline.
+14. 溪石 hides during the exit, and Pebril moves to the center of the navigation bar.
+15. The scroll exit animation must support reverse restoration.
+
+### 16.2 Items to Be Verified
+
+| Item | Current status |
 |---|---|
-| 加载涟漪的最大振幅 | 待验证 |
-| 加载进度与振幅的非线性关系 | 有初始方案 |
-| 波纹传播频率与方向 | 待验证 |
-| 三个圆环是否使用不同波纹相位 | 待验证 |
-| 实际资源进度的任务权重 | 待技术测试 |
-| 进度平滑的响应速度 | 待验证 |
-| P0 与 Loading Ripple 的时间衔接 | 待验证 |
-| P1 开始前的平静过渡 | 待验证 |
-| P2 的具体输入反馈规则 | 待验证 |
-| P3 的呼吸幅度与周期 | 有初始方案 |
-| P4 的圆环展开几何算法 | 待独立原型 |
-| 三环归一的路径 | 待验证 |
-| P4、P5 的滚动区间 | 待验证 |
-| 加载期间提前滚动的处理方式 | 待验证 |
-| 移动端同心圆构图 | 待设计 |
+| Maximum amplitude of the loading ripple | to be verified |
+| Nonlinear relationship between loading progress and amplitude | initial approach defined |
+| Ripple propagation frequency and direction | to be verified |
+| Whether the three rings use different ripple phases | to be verified |
+| Task weights for actual resource progress | to be technically tested |
+| Response speed of progress smoothing | to be verified |
+| Time handoff between P0 and Loading Ripple | to be verified |
+| Calm transition before P1 begins | to be verified |
+| Specific input feedback rules for P2 | to be verified |
+| Breathing amplitude and period for P3 | initial approach defined |
+| Ring unfolding geometry algorithm for P4 | to be prototyped independently |
+| Path for the three rings to converge into one | to be verified |
+| Scroll ranges for P4 and P5 | to be verified |
+| Handling of scrolling during loading | to be verified |
+| Concentric circle composition on mobile | to be designed |
 
 ---
 
-## 17. 设计结语
+## 17. Closing
 
-Prelude 不只是一段等待动画。
+Prelude is not merely a waiting animation.
 
-它是 Pebril 视觉叙事的起点。
+It is the starting point of Pebril's visual narrative.
 
-用户打开网页时，三个同心圆从暖白色的画面中逐渐浮现。
+When the user opens the page, three concentric circles gradually emerge out of the warm-white frame.
 
-此时，资源仍在准备，圆环上存在轻微的涟漪。
+At this point resources are still being prepared, and slight ripples run across the rings.
 
-随着加载进度不断提高，波动逐渐减弱，水面慢慢恢复平静。
+As loading progress continues to rise, the fluctuation gradually subsides and the water surface slowly returns to calm.
 
-当页面准备完成，Pebril 渐隐，「溪石」浮现。
+When the page is ready, Pebril fades out and 溪石 emerges.
 
-同心圆开始轻轻呼吸，安静地等待用户的下一步探索。
+The concentric circles begin to breathe lightly, quietly waiting for the user's next step of exploration.
 
-当用户向下滚动，三个圆环依次从顶部断开、展开，并最终汇聚为唯一一条直线。
+When the user scrolls down, the three rings break at the top one after another, unfold, and finally converge into a single straight line.
 
-线条逐渐向画面底部移动并消散。
+The line gradually moves toward the bottom of the frame and dissipates.
 
-Pebril 回到导航栏，正式的相册扉页随之显现。
+Pebril returns to the navigation bar, and the formal album cover page appears.
 
-而那条曾经由涟漪形成的直线，将在后续时间漫游中，以时间轴的形式重新出现。
+And that straight line, once formed by ripples, will reappear as a timeline during the subsequent time roaming.
 
-**波动 → 平静 → 呼吸 → 归线 → 时间。**
+**Ripple → Calm → Breath → Return to the Line → Time.**
 
-这一过程表达了 Pebril 对记忆、时间与秩序之间关系的理解。
+This process expresses Pebril's understanding of the relationship among memory, time, and order.
 
-**从流动中发现联系，在秩序中保留自由。**
+**Find connection in flow, and keep freedom within order.**
 
 ---
 
 *Pebril — Prelude & Loading Animation Specification v0.2*
 
-*本版本新增 Loading Ripple 模块，并调整 P0、P1 的触发条件和整体加载生命周期。设计行为已纳入规范，具体动画参数及技术实现仍需逐阶段原型验证。*
+*This version adds the Loading Ripple module and adjusts the trigger conditions of P0 and P1 and the overall loading lifecycle. The design behavior has been incorporated into the specification; specific animation parameters and technical implementation still require stage-by-stage prototype verification.*

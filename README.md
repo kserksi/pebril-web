@@ -8,6 +8,8 @@ The public-facing site for Pebril, a quiet, self-hostable photo library: a Prelu
 - Site: <https://pebril.dev>
 - Design wiki: <https://github.com/kserksi/pebril-web/wiki>
 
+**Documentation language.** Everything in this repository is written in English: `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `loning.md`, the guides under `qa/` and `tools/`, and the design wiki. Chinese versions are kept together in [`zh-hans/`](zh-hans/README.md) as translations and archives - they are never deployed. The design record itself lives in the [wiki](https://github.com/kserksi/pebril-web/wiki), which is authoritative; when a translation disagrees with it, the English page wins.
+
 ---
 
 ## What is here
@@ -25,6 +27,7 @@ The public-facing site for Pebril, a quiet, self-hostable photo library: a Prelu
 | `scripts/` | `check-site.py`: static checks (local references, third-party requests, CSP hash, sitemap, robots, icons), the first gate in CI |
 | `.github/` | CI and issue/pull-request templates |
 | `loning.md` | Motion specification for the Prelude, PEB-DES-MOTION-001 |
+| `zh-hans/` | Chinese translations and archives: the design wiki in Chinese, the motion spec, the QA and tools guides |
 
 The site does not bundle: it publishes native ES modules and hand-written CSS. Only the Journal needs a build step.
 

@@ -12,6 +12,10 @@ Use `dev` for normal development and open pull requests against it. `main` holds
 
 Work inside WSL2 on its native filesystem. Do not use Windows-mounted project or cache paths for builds, tests or Git operations.
 
+## Language
+
+Write everything that lands in this repository in English: code comments, commit messages, documentation, issue and pull request text. Chinese belongs in [`zh-hans/`](zh-hans/README.md), which holds translations and archives only; it is never built or deployed. When the two disagree, the English text is the one to trust - and for design decisions, the [wiki](https://github.com/kserksi/pebril-web/wiki) page rather than either translation.
+
 ## Design authority
 
 [PEB-DES-SYSTEM-001](https://github.com/kserksi/pebril-web/wiki/24-Design-System-Spec) is the shared spec for this site and for the product front-end: colour, type roles, spacing, components, motion. `loning.md` covers the Prelude motion. If an implementation disagrees with the spec, fix the implementation; if the spec is wrong, change the wiki page and note why in the [change log](https://github.com/kserksi/pebril-web/wiki/Change-Log).
