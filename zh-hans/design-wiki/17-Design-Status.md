@@ -1,6 +1,6 @@
 # 当前确定事项与待验证事项
 
-[Wiki 首页](README.md) · [上一页](16-页脚.md) · [下一页](18-验收标准.md)
+[Wiki 首页](Home.md) · [上一页](16-Footer.md) · [下一页](18-Acceptance-Criteria.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 15 章。保留原文的已确定、候选和待验证状态。
 
@@ -108,4 +108,4 @@ Owner correction (2026-11-01): the Prelude note "向下，慢慢展开 ↓" is n
 
 ---
 
-[Wiki 首页](README.md) · [上一页](16-页脚.md) · [下一页](18-验收标准.md)
+[Wiki 首页](Home.md) · [上一页](16-Footer.md) · [下一页](18-Acceptance-Criteria.md)

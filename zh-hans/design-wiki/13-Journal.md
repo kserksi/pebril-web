@@ -1,6 +1,6 @@
 # Journal 设计
 
-[Wiki 首页](README.md) · [上一页](12-设计系统.md) · [下一页](14-SEO.md)
+[Wiki 首页](Home.md) · [上一页](12-Design-System.md) · [下一页](14-SEO.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 11 章；2026-11-01 按实际实现重写。
 
@@ -45,4 +45,4 @@ Journal 是 Pebril 的公开开发手记空间。
 
 ---
 
-[Wiki 首页](README.md) · [上一页](12-设计系统.md) · [下一页](14-SEO.md)
+[Wiki 首页](Home.md) · [上一页](12-Design-System.md) · [下一页](14-SEO.md)

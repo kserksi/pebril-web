@@ -1,6 +1,6 @@
 # SEO 与内容可发现性
 
-[Wiki 首页](README.md) · [上一页](13-Journal.md) · [下一页](15-响应式与可访问性.md)
+[Wiki 首页](Home.md) · [上一页](13-Journal.md) · [下一页](15-Responsive-and-Accessibility.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 12 章。保留原文的已确定、候选和待验证状态。
 
@@ -61,4 +61,4 @@ Reference: [Google developer guidance](https://developers.google.com/search/docs
 
 ---
 
-[Wiki 首页](README.md) · [上一页](13-Journal.md) · [下一页](15-响应式与可访问性.md)
+[Wiki 首页](Home.md) · [上一页](13-Journal.md) · [下一页](15-Responsive-and-Accessibility.md)

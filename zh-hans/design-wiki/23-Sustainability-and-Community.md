@@ -1,6 +1,6 @@
 # 可持续性与社区愿景
 
-[Wiki 首页](README.md) · [来源与维护](维护指南.md)
+[Wiki 首页](Home.md) · [来源与维护](Maintenance-Guide.md)
 
 > 产品长期愿景分区。来源：design-philosophy.md 的日期快照；保留英文原文，避免翻译引入范围变化。愿景不等于已实现功能或发布承诺；交付范围仍由开发仓库的维护规范决定。
 

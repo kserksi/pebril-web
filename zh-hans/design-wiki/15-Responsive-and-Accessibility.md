@@ -1,6 +1,6 @@
 # 性能、响应式与可访问性
 
-[Wiki 首页](README.md) · [上一页](14-SEO.md) · [下一页](16-页脚.md)
+[Wiki 首页](Home.md) · [上一页](14-SEO.md) · [下一页](16-Footer.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 13 章。保留原文的已确定、候选和待验证状态。
 
@@ -102,7 +102,7 @@
 
 ---
 
-[Wiki 首页](README.md) · [上一页](14-SEO.md) · [下一页](16-页脚.md)
+[Wiki 首页](Home.md) · [上一页](14-SEO.md) · [下一页](16-Footer.md)
 
 ## Local motion/focus correction · 2026-10-25
 

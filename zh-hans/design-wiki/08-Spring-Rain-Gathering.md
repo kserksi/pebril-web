@@ -1,6 +1,6 @@
 # 7.3 Spring Rain to River — 春雨成河：归集关键帧与数据边界（v0.3 动效补充）
 
-[Wiki 首页](README.md) · [上一页](07-滚动分镜.md) · [下一页](09-柳梢与溪流.md)
+[Wiki 首页](Home.md) · [上一页](07-Scroll-Storyboard.md) · [下一页](09-Willow-and-Stream.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 7.3 节。保留原文的已确定、候选和待验证状态。
 
@@ -50,7 +50,7 @@ Implementation details following the existing continuity, accessibility and inte
 - Reuse the currently flowing nodes; defer remaining source-pool members until gathering and give them the same upper-river geometry as the flowing members. Do not include those noncritical images in Prelude resource gating. Reversing to the river removes added nodes and restores current source identities and motion phase.
 - Normal gathering is position-driven, pausable and reversible. Active exploration holds its settled composition through the final 20% when reversing slightly, then releases for a deliberate return. Reduced-motion mode presents static collection exploration rather than long scroll trajectories.
 
-These are implemented prototype settings subject to visual review, not acceptance of the complete six-phase site. This paragraph describes the initial gathering-only iteration; current local-photo and closure implementation status is maintained in [the status topic](17-设计状态.md). Independent time-label filtering remains separate work.
+These are implemented prototype settings subject to visual review, not acceptance of the complete six-phase site. This paragraph describes the initial gathering-only iteration; current local-photo and closure implementation status is maintained in [the status topic](17-Design-Status.md). Independent time-label filtering remains separate work.
 
 仍待原型验证
 
@@ -58,7 +58,7 @@ These are implemented prototype settings subject to visual review, not acceptanc
 
 ---
 
-[Wiki 首页](README.md) · [上一页](07-滚动分镜.md) · [下一页](09-柳梢与溪流.md)
+[Wiki 首页](Home.md) · [上一页](07-Scroll-Storyboard.md) · [下一页](09-Willow-and-Stream.md)
 
 ## Owner caption-container correction · 2026-10-25
 

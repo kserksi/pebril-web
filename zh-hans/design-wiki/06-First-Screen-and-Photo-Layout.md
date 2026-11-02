@@ -1,6 +1,6 @@
 # 第一屏：相册扉页
 
-[Wiki 首页](README.md) · [上一页](05-首页叙事.md) · [下一页](07-滚动分镜.md)
+[Wiki 首页](Home.md) · [上一页](05-Homepage-Narrative.md) · [下一页](07-Scroll-Storyboard.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 6 章。保留原文的已确定、候选和待验证状态。
 
@@ -116,7 +116,7 @@ Owner-confirmed local sample pool (2026-10-24): use the 25 supplied 1920 × 1080
 
 Implemented viewer envelope correction (owner review, 2026-10-25): the opened photo uses the same original-ratio and viewport-bound principles, with a content-sized surrounding panel. Landscape, portrait and square members do not inherit a full-height blank viewer shell. The header and icon controls remain outside the image bounds; resizing refits the current image without altering pixels.
 
-容器与图片尺寸变化后，布局应根据实际卡片边界重新确定间距、重叠与运动锚点。[第 6.2 节](06-首屏与照片布局.md#s-6-2)规定的 50% / 25% / 15% 露出层级，应按各张卡片自身的完整高度计算，同时受统一的首屏文案安全区域限制；重叠与间距按照[第 6.2 节](06-首屏与照片布局.md#s-6-2)的水平投影度量口径执行。
+容器与图片尺寸变化后，布局应根据实际卡片边界重新确定间距、重叠与运动锚点。[第 6.2 节](06-First-Screen-and-Photo-Layout.md#s-6-2)规定的 50% / 25% / 15% 露出层级，应按各张卡片自身的完整高度计算，同时受统一的首屏文案安全区域限制；重叠与间距按照[第 6.2 节](06-First-Screen-and-Photo-Layout.md#s-6-2)的水平投影度量口径执行。
 
 实现取向与运动连续性
 
@@ -132,4 +132,4 @@ Owner correction implemented on 2026-10-25: autonomous right-to-left flow contin
 
 ---
 
-[Wiki 首页](README.md) · [上一页](05-首页叙事.md) · [下一页](07-滚动分镜.md)
+[Wiki 首页](Home.md) · [上一页](05-Homepage-Narrative.md) · [下一页](07-Scroll-Storyboard.md)

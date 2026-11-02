@@ -1,6 +1,6 @@
 # 本地照片演示
 
-[Wiki 首页](README.md) · [上一页](10-时间轴探索.md) · [下一页](12-设计系统.md)
+[Wiki 首页](Home.md) · [上一页](10-Timeline-Exploration.md) · [下一页](12-Design-System.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 9 章。保留原文的已确定、候选和待验证状态。
 
@@ -16,7 +16,7 @@
 
 Owner update (2026-10-25), superseding the whole-source replacement described above: each valid local photo replaces one remaining sample photograph, prioritizing occupied river slots. Untouched samples and previously selected local photos remain available. Additional batches accumulate; after all 25 samples are replaced, further valid photos are appended without a 25-photo limit. All scenes still share one photo source and motion system.
 
-替换的是照片数据，不是运动系统：默认示例图与本地图片共用[第 6.3 节](06-首屏与照片布局.md#s-6-3)的弹性卡片、空间约束和同一套六阶段 Memory in Motion 叙事，不创建示例图与上传图各自独立的页面和动画版本。
+替换的是照片数据，不是运动系统：默认示例图与本地图片共用[第 6.3 节](06-First-Screen-and-Photo-Layout.md#s-6-3)的弹性卡片、空间约束和同一套六阶段 Memory in Motion 叙事，不创建示例图与上传图各自独立的页面和动画版本。
 
 同一份当前照片集合供首屏河流与第二屏时间轴使用。照片数据至少应包含临时身份标识、图像来源、可用尺寸与宽高比、可信时间信息（如有）；切换数据源时，时间轴和图片集位置随对应时间数据一起更新，不允许仅替换像素、继续沿用示例图片的虚构时间坐标。
 
@@ -52,4 +52,4 @@ The supplied 25 WebP images remain the complete default sample pool, with the fi
 
 ---
 
-[Wiki 首页](README.md) · [上一页](10-时间轴探索.md) · [下一页](12-设计系统.md)
+[Wiki 首页](Home.md) · [上一页](10-Timeline-Exploration.md) · [下一页](12-Design-System.md)

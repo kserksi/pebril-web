@@ -1,6 +1,6 @@
 # 品牌命名与文案
 
-[Wiki 首页](README.md) · [上一页](02-设计哲学.md) · [下一页](04-视觉基准.md)
+[Wiki 首页](Home.md) · [上一页](02-Design-Philosophy.md) · [下一页](04-Visual-Baseline.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 3 章。保留原文的已确定、候选和待验证状态。
 
@@ -34,7 +34,7 @@ Owner display-copy adjustment (2026-10-25): headings, slogans, brand labels and 
 
 ---
 
-[Wiki 首页](README.md) · [上一页](02-设计哲学.md) · [下一页](04-视觉基准.md)
+[Wiki 首页](Home.md) · [上一页](02-Design-Philosophy.md) · [下一页](04-Visual-Baseline.md)
 
 ## Owner motion/copy correction · 2026-10-25
 

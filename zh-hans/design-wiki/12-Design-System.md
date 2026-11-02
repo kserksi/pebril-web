@@ -1,6 +1,6 @@
 # 统一设计系统
 
-[Wiki 首页](README.md) · [上一页](11-本地照片演示.md) · [下一页](13-Journal.md)
+[Wiki 首页](Home.md) · [上一页](11-Local-Photo-Demo.md) · [下一页](13-Journal.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 10 章。保留原文的已确定、候选和待验证状态。
 
@@ -84,4 +84,4 @@ Pebril 目前主要由一位开发者维护。实现新设计或特殊适配时�
 
 ---
 
-[Wiki 首页](README.md) · [上一页](11-本地照片演示.md) · [下一页](13-Journal.md)
+[Wiki 首页](Home.md) · [上一页](11-Local-Photo-Demo.md) · [下一页](13-Journal.md)

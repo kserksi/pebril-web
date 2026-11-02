@@ -1,6 +1,6 @@
 # 页脚
 
-[Wiki 首页](README.md) · [上一页](15-响应式与可访问性.md) · [下一页](17-设计状态.md)
+[Wiki 首页](Home.md) · [上一页](15-Responsive-and-Accessibility.md) · [下一页](17-Design-Status.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 14 章。保留原文的已确定、候选和待验证状态。
 
@@ -16,7 +16,7 @@ Pebril / 溪石
 
 以及 Journal、GitHub、X、必要隐私与法律信息。
 
-页脚与时间轴的连接是视觉意象上的延续，而不是功能上将时间轴直接变成页脚。时间轴主体线条可以逐渐弱化为低振幅波浪分隔线；其上方少量残留照片与分隔线形成「柳梢与溪流」的局部、差时呼应（见[第 7.4 节](09-柳梢与溪流.md#s-7-4)）。
+页脚与时间轴的连接是视觉意象上的延续，而不是功能上将时间轴直接变成页脚。时间轴主体线条可以逐渐弱化为低振幅波浪分隔线；其上方少量残留照片与分隔线形成「柳梢与溪流」的局部、差时呼应（见[第 7.4 节](09-Willow-and-Stream.md#s-7-4)）。
 
 页脚本身必须保持清晰、稳定、容易操作。波浪线不占据额外的交互主导权，也不影响 Journal、GitHub、X 等链接的可达性。
 
@@ -28,7 +28,7 @@ Owner-confirmed destinations: Journal `/journal`; X `https://x.com/pebril_dev`; 
 
 ---
 
-[Wiki 首页](README.md) · [上一页](15-响应式与可访问性.md) · [下一页](17-设计状态.md)
+[Wiki 首页](Home.md) · [上一页](15-Responsive-and-Accessibility.md) · [下一页](17-Design-Status.md)
 
 Owner correction (2026-10-25): the ripple status is visually clipped instead of adding explanatory phrases such as hover/click feedback to the footer. Pointer, touch and keyboard actions still produce the same photo/wave response; equivalent status remains available to assistive technology. The copyright and privacy controls remain visible and the legal band stays compact.
 

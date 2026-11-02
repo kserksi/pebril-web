@@ -1,6 +1,6 @@
 # 7.4 Willow & Stream — 柳梢与溪流：退场余韵及分级反馈（v0.3 动效补充）
 
-[Wiki 首页](README.md) · [上一页](08-春雨归集.md) · [下一页](10-时间轴探索.md)
+[Wiki 首页](Home.md) · [上一页](08-Spring-Rain-Gathering.md) · [下一页](10-Timeline-Exploration.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 7.4 节。保留原文的已确定、候选和待验证状态。
 
@@ -58,7 +58,7 @@ A genuine exploration interval now precedes the one-height exit. The accepted ga
 
 ---
 
-[Wiki 首页](README.md) · [上一页](08-春雨归集.md) · [下一页](10-时间轴探索.md)
+[Wiki 首页](Home.md) · [上一页](08-Spring-Rain-Gathering.md) · [下一页](10-Timeline-Exploration.md)
 
 ## Owner single-photo interaction correction · 2026-10-25
 

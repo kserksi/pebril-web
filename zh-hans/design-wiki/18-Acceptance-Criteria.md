@@ -1,6 +1,6 @@
 # 设计验收标准
 
-[Wiki 首页](README.md) · [上一页](17-设计状态.md) · [下一页](19-叙事结语.md)
+[Wiki 首页](Home.md) · [上一页](17-Design-Status.md) · [下一页](19-Narrative-Coda.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 16 章。保留原文的已确定、候选和待验证状态。
 
@@ -32,4 +32,4 @@
 
 ---
 
-[Wiki 首页](README.md) · [上一页](17-设计状态.md) · [下一页](19-叙事结语.md)
+[Wiki 首页](Home.md) · [上一页](17-Design-Status.md) · [下一页](19-Narrative-Coda.md)

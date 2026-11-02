@@ -1,6 +1,6 @@
 # 项目定位
 
-[Wiki 首页](README.md) · [下一页](02-设计哲学.md)
+[Wiki 首页](Home.md) · [下一页](02-Design-Philosophy.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 1 章。保留原文的已确定、候选和待验证状态。
 
@@ -24,4 +24,4 @@ Journal Article /journal/[slug]/：独立的文章详情页。
 
 ---
 
-[Wiki 首页](README.md) · [下一页](02-设计哲学.md)
+[Wiki 首页](Home.md) · [下一页](02-Design-Philosophy.md)

@@ -1,6 +1,6 @@
 # 第二屏：时间漫游
 
-[Wiki 首页](README.md) · [上一页](09-柳梢与溪流.md) · [下一页](11-本地照片演示.md)
+[Wiki 首页](Home.md) · [上一页](09-Willow-and-Stream.md) · [下一页](11-Local-Photo-Demo.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 8 章。保留原文的已确定、候选和待验证状态。
 
@@ -100,4 +100,4 @@ Owner readout/context correction (2026-10-25): initial exploration centers on th
 
 ---
 
-[Wiki 首页](README.md) · [上一页](09-柳梢与溪流.md) · [下一页](11-本地照片演示.md)
+[Wiki 首页](Home.md) · [上一页](09-Willow-and-Stream.md) · [下一页](11-Local-Photo-Demo.md)

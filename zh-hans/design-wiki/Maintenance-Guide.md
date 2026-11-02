@@ -1,6 +1,6 @@
 # Wiki 维护指南
 
-[返回首页](README.md) · [来源映射](来源映射.md) · [变更记录](变更记录.md)
+[返回首页](Home.md) · [来源映射](Source-Map.md) · [变更记录](Change-Log.md)
 
 ## 资料权威与范围
 

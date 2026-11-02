@@ -1,6 +1,6 @@
 # 核心设计哲学
 
-[Wiki 首页](README.md) · [上一页](01-项目定位.md) · [下一页](03-品牌与文案.md)
+[Wiki 首页](Home.md) · [上一页](01-Project-Positioning.md) · [下一页](03-Brand-and-Copy.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 2 章。保留原文的已确定、候选和待验证状态。
 
@@ -38,4 +38,4 @@ Pebril 的界面应当在理性与感性之间保持平衡。
 
 ---
 
-[Wiki 首页](README.md) · [上一页](01-项目定位.md) · [下一页](03-品牌与文案.md)
+[Wiki 首页](Home.md) · [上一页](01-Project-Positioning.md) · [下一页](03-Brand-and-Copy.md)

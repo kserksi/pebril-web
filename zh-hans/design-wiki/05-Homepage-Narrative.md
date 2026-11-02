@@ -1,6 +1,6 @@
 # 首页总体叙事
 
-[Wiki 首页](README.md) · [上一页](04-视觉基准.md) · [下一页](06-首屏与照片布局.md)
+[Wiki 首页](Home.md) · [上一页](04-Visual-Baseline.md) · [下一页](06-First-Screen-and-Photo-Layout.md)
 
 > 来源：官网设计白皮书 v0.3 · 原白皮书第 5 章。保留原文的已确定、候选和待验证状态。
 
@@ -26,4 +26,4 @@
 
 ---
 
-[Wiki 首页](README.md) · [上一页](04-视觉基准.md) · [下一页](06-首屏与照片布局.md)
+[Wiki 首页](Home.md) · [上一页](04-Visual-Baseline.md) · [下一页](06-First-Screen-and-Photo-Layout.md)
